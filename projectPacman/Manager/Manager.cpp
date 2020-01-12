@@ -1,8 +1,6 @@
 #include<thread>
-//#include<windows.h>
 
 #include "Manager.hpp"
-#include "projectPacman/Tools/Types.hpp"
 
 //------------------------------------------------------------------------------------------
 Manager::Manager()
@@ -34,7 +32,7 @@ void Manager::checkUserAction()
 void Manager::update()
 //------------------------------------------------------------------------------------------
 {
-    wipeObject(mPacman_.getXpos(), mPacman_.getYpos());
+    wipeObject(mPacman_.getCoordinates());
     if (mPacman_.move()) {
         updatePacmanDirection();
     }
@@ -46,7 +44,6 @@ void Manager::showField()
 //------------------------------------------------------------------------------------------
 {
     mField_.showField();
-    //system("pause>nul");
     std::this_thread::sleep_for(std::chrono::milliseconds(60));
 }
 
@@ -61,7 +58,7 @@ bool Manager::gameOver()
 void Manager::drawPacman()
 //------------------------------------------------------------------------------------------
 {
-    mField_.setChar(mPacman_.getXpos(), mPacman_.getYpos(),PACMAN_SYMBOL);
+    mField_.setChar(mPacman_.getCoordinates(),PACMAN_SYMBOL);
 }
 
 //------------------------------------------------------------------------------------------
@@ -95,17 +92,17 @@ void Manager::processingPressedButton()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::wipeObject(const uint8_t x,const uint8_t y)
+void Manager::wipeObject(COORDINATES coord)
 //------------------------------------------------------------------------------------------
 {
-    mField_.setChar(x, y,OBJECT_EMPTY);
+    mField_.setChar(coord.first, coord.second,OBJECT_EMPTY);
 }
 
 //------------------------------------------------------------------------------------------
 void Manager::updatePacmanDirection()
 //------------------------------------------------------------------------------------------
 {
-    mPacman_.setNextTile(mField_.getChar(mPacman_.getNextTileXpos(), mPacman_.getNextTileYpos()));
+    mPacman_.setNextTile(mField_.getChar(mPacman_.getNextTileCoordinates()));
 }
 
 

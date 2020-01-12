@@ -11,15 +11,13 @@ class Pacman: public ICharacter {
 
         virtual bool move();
         virtual void resetPosition();
-        virtual uint8_t getXpos();
-        virtual uint8_t getYpos();
+        virtual COORDINATES getCoordinates();
         virtual void goUp();
         virtual void goLeft();
         virtual void goDown();
         virtual void goRight();
         virtual void setNextTile(uint8_t);
-        uint8_t getNextTileXpos();
-        uint8_t getNextTileYpos();
+        virtual COORDINATES getNextTileCoordinates();
 
         private:
         CharacterDescription mDescription_;

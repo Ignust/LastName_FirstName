@@ -1,6 +1,9 @@
 #ifndef TYPES_HPP
 #define TYPES_HPP
 
+#include <utility>
+#include <stdint.h>
+
 #define BOTTOM_LINE_SIZE 3
 
 #define SPACE_SYMBOL			0x002E			// see UNICODE table
@@ -46,6 +49,8 @@
 
 //#define TIME_AUTO_SHIFT (1)
 //#define TIME_BETWEEN_ROTATES (0.1)
+
+typedef std::pair<uint8_t,uint8_t> COORDINATES;
 
 enum E_BUTTONS {
     A_Button =      97,

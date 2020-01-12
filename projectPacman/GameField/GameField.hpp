@@ -4,6 +4,7 @@
 #include <vector>
 #include <stdint.h>
 
+#include "projectPacman/Tools/Types.hpp"
 
 class GameField {
     public:
@@ -12,7 +13,9 @@ class GameField {
 
         void showField();
         void setChar(const uint8_t x, const uint8_t y, const uint8_t c);
+        void setChar(const COORDINATES,  const uint8_t c);
         uint8_t getChar(const uint8_t x, const uint8_t y);
+        uint8_t getChar(const COORDINATES);
         void printScore();
         void resetField();
 

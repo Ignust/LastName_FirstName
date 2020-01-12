@@ -4,6 +4,7 @@
 #include "projectPacman/GameField/GameField.hpp"
 #include "projectPacman/Keybord/Keybord.hpp"
 #include "projectPacman/Pacman/Pacman.hpp"
+#include "projectPacman/Tools/Types.hpp"
 
 
 class Manager {
@@ -19,7 +20,7 @@ class Manager {
     private:
         void drawPacman();
         void processingPressedButton();
-        void wipeObject(const uint8_t,const uint8_t);
+        void wipeObject(COORDINATES);
         void updatePacmanDirection();
 
         GameField mField_;

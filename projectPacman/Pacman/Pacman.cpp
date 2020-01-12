@@ -1,5 +1,3 @@
-#include <projectPacman/Tools/Types.hpp>
-
 #include "Pacman.hpp"
 
 //------------------------------------------------------------------------------------------
@@ -24,16 +22,16 @@ bool Pacman::move()
     if (mDescription_.nextTile_ != BOUNDARY_SYMBOL) {
         switch (mDescription_.mDirection_) {
             case UP :
-                mDescription_.posY_--;
+                mDescription_.mCoordinates_.second--;
                 break;
             case LEFT :
-                mDescription_.posX_--;
+                mDescription_.mCoordinates_.first--;
                 break;
             case DOWN :
-                mDescription_.posY_++;
+                mDescription_.mCoordinates_.second++;
                 break;
             case RIGHT :
-                mDescription_.posX_++;
+                mDescription_.mCoordinates_.first++;
                 break;
             default:
                 break;
@@ -47,24 +45,17 @@ bool Pacman::move()
 void Pacman::resetPosition()
 //------------------------------------------------------------------------------------------
 {
-    mDescription_.posX_ = START_X_PACMAN;
-    mDescription_.posY_ = START_Y_PACMAN;
     mDescription_.mDirection_ = RIGHT;
     mDescription_.nextTile_ = OBJECT_EMPTY;
+    mDescription_.mCoordinates_.first = START_X_PACMAN;
+    mDescription_.mCoordinates_.second = START_Y_PACMAN;
 }
 
 //------------------------------------------------------------------------------------------
-uint8_t Pacman::getXpos()
+COORDINATES Pacman::getCoordinates()
 //------------------------------------------------------------------------------------------
 {
-    return mDescription_.posX_;
-}
-
-//------------------------------------------------------------------------------------------
-uint8_t Pacman::getYpos()
-//------------------------------------------------------------------------------------------
-{
-    return mDescription_.posY_;
+    return mDescription_.mCoordinates_;
 }
 
 //------------------------------------------------------------------------------------------
@@ -103,32 +94,22 @@ void Pacman::setNextTile(uint8_t taile)
 }
 
 //------------------------------------------------------------------------------------------
-uint8_t Pacman::getNextTileXpos()
+COORDINATES Pacman::getNextTileCoordinates()
 //------------------------------------------------------------------------------------------
 {
-    uint8_t x = mDescription_.posX_;
-
+    COORDINATES nextTaile (mDescription_.mCoordinates_);
     if (mDescription_.mDirection_ == LEFT) {
-        x --;
+        nextTaile.first--;
     }
     if (mDescription_.mDirection_ == RIGHT) {
-        x ++;
+        nextTaile.first++;
     }
-    return x;
-}
-
-//------------------------------------------------------------------------------------------
-uint8_t Pacman::getNextTileYpos()
-//------------------------------------------------------------------------------------------
-{
-    uint8_t y = mDescription_.posY_;
-
     if (mDescription_.mDirection_ == UP) {
-        y --;
+        nextTaile.second--;
     }
     if (mDescription_.mDirection_ == DOWN) {
-        y ++;
+        nextTaile.second++;
     }
-    return y;
+    return nextTaile;
 }
 
