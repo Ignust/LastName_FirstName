@@ -18,10 +18,14 @@ class GameField {
         uint8_t getChar(const COORDINATES);
         void printScore();
         void resetField();
+        void printScore(uint32_t);
 
     private:
         void initField();
         void initFieldSize();
+        void printGameField();
+        void printScoreField();
+        void printScoreTitle(const wchar_t* line);
         void printRectangleBoudary(const uint8_t x1, const uint8_t y1, const uint8_t x2, const uint8_t y2);
         void printLine(const uint8_t x1, const uint8_t y1, const uint8_t x2, const uint8_t  y2);
 

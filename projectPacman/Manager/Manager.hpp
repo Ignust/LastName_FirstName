@@ -26,6 +26,7 @@ class Manager {
         GameField mField_;
         Keybord mKeybord_;
         Pacman mPacman_;
+        uint32_t mScore_;
 };
 
 #endif // MANAGER_HPP

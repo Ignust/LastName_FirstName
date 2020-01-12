@@ -24,8 +24,8 @@ void GameField::showField()
 //------------------------------------------------------------------------------------------
 {
     system("cls");
-    for (auto y = 0; y < GAME_FIELD_Y_SIZE; ++y) {
-        for (auto x = 0; x < GAME_FIELD_X_SIZE; ++x) {
+    for (auto y = 0; y < Y_SIZE; ++y) {
+        for (auto x = 0; x < X_SIZE; ++x) {
             std::cout << mField_[y][x];
         }
         std::cout << std::endl;
@@ -76,12 +76,28 @@ void GameField::resetField()
 }
 
 //------------------------------------------------------------------------------------------
+void GameField::printScore(uint32_t score)
+//------------------------------------------------------------------------------------------
+{
+    const uint8_t size = 10;
+        wchar_t scoreString[size] = {};
+        swprintf_s(scoreString, L"%d", score);
+        const uint8_t length = wcslen(scoreString);
+        const uint8_t shift_X = SCORE_FIELD_X_START + 10;
+        const uint8_t shift_Y = SCORE_FIELD_Y_START + SCORE_FIELD_Y_SIZE / 2;
+
+        for (uint8_t i = 0; i < length; ++i) {
+            setChar(shift_X + i, shift_Y, scoreString[i]);
+        }
+}
+
+//------------------------------------------------------------------------------------------
 void GameField::initField()
 //------------------------------------------------------------------------------------------
 {
     initFieldSize();
-    printRectangleBoudary(GAME_FIELD_X_START, GAME_FIELD_Y_START,
-                          GAME_FIELD_X_FINISH, GAME_FIELD_Y_FINISH);
+    printGameField();
+    printScoreField();
 
 }
 
@@ -89,9 +105,43 @@ void GameField::initField()
 void GameField::initFieldSize()
 //------------------------------------------------------------------------------------------
 {
-    mField_.resize(GAME_FIELD_Y_SIZE);
-    for (auto i = 0; i < GAME_FIELD_Y_SIZE; ++i) {
-        mField_[i].resize(GAME_FIELD_X_SIZE, OBJECT_EMPTY);
+    mField_.resize(Y_SIZE);
+    for (auto i = 0; i < Y_SIZE; ++i) {
+        mField_[i].resize(X_SIZE, OBJECT_EMPTY);
+    }
+}
+
+//------------------------------------------------------------------------------------------
+void GameField::printGameField()
+//------------------------------------------------------------------------------------------
+{
+    printRectangleBoudary(GAME_FIELD_X_START, GAME_FIELD_Y_START,
+                          GAME_FIELD_X_FINISH, GAME_FIELD_Y_FINISH);
+}
+
+//------------------------------------------------------------------------------------------
+void GameField::printScoreField()
+//------------------------------------------------------------------------------------------
+{
+    printRectangleBoudary(SCORE_FIELD_X_START, SCORE_FIELD_Y_START,
+                          SCORE_FIELD_X_FINISH, SCORE_FIELD_Y_FINISH);
+    printScoreTitle(L">Score:");
+}
+
+//------------------------------------------------------------------------------------------
+void GameField::printScoreTitle(const wchar_t* line)
+//------------------------------------------------------------------------------------------
+{
+    if (line == nullptr) {
+        return;
+    }
+
+    const uint8_t length = wcslen(line);
+    const uint8_t shift_X = SCORE_FIELD_X_START + 2;
+    const uint8_t shift_Y = SCORE_FIELD_Y_START + SCORE_FIELD_Y_SIZE / 2;
+
+    for (uint8_t i = 0; i < length; ++i) {
+        setChar(shift_X + i, shift_Y, line[i]);
     }
 }
 
