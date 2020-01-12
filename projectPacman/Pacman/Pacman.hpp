@@ -13,14 +13,17 @@ class Pacman: public ICharacter {
         virtual void resetPosition();
         virtual uint8_t getXpos();
         virtual uint8_t getYpos();
-        void goUp();
-        void goLeft();
-        void goDown();
-        void goRight();
-        void setNextTile(uint8_t);
+        virtual void goUp();
+        virtual void goLeft();
+        virtual void goDown();
+        virtual void goRight();
+        virtual void setNextTile(uint8_t);
+        uint8_t getNextTileXpos();
+        uint8_t getNextTileYpos();
 
         private:
         CharacterDescription mDescription_;
+
 
 };
 

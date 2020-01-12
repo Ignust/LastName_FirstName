@@ -20,6 +20,7 @@ class Manager {
         void drawPacman();
         void processingPressedButton();
         void wipeObject(const uint8_t,const uint8_t);
+        void updatePacmanDirection();
 
         GameField mField_;
         Keybord mKeybord_;

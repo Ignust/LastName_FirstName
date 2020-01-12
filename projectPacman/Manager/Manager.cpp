@@ -36,7 +36,7 @@ void Manager::update()
 {
     wipeObject(mPacman_.getXpos(), mPacman_.getYpos());
     if (mPacman_.move()) {
-        mPacman_.setNextTile(mField_.getChar(mPacman_.getXpos(), mPacman_.getYpos()));
+        updatePacmanDirection();
     }
     drawPacman();
 }
@@ -72,18 +72,22 @@ void Manager::processingPressedButton()
     case A_Button:
     case Left_Button:
         mPacman_.goLeft();
+        updatePacmanDirection();
         break;
     case D_Button:
     case Right_Button:
         mPacman_.goRight();
+        updatePacmanDirection();
         break;
     case S_Button:
     case Down_Button:
         mPacman_.goDown();
+        updatePacmanDirection();
         break;
     case W_Button:
     case UP_Button:
         mPacman_.goUp();
+        updatePacmanDirection();
         break;
     default:
         break;
@@ -97,6 +101,12 @@ void Manager::wipeObject(const uint8_t x,const uint8_t y)
     mField_.setChar(x, y,OBJECT_EMPTY);
 }
 
+//------------------------------------------------------------------------------------------
+void Manager::updatePacmanDirection()
+//------------------------------------------------------------------------------------------
+{
+    mPacman_.setNextTile(mField_.getChar(mPacman_.getNextTileXpos(), mPacman_.getNextTileYpos()));
+}
 
 
 

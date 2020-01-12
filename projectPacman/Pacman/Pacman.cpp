@@ -102,3 +102,33 @@ void Pacman::setNextTile(uint8_t taile)
     mDescription_.nextTile_ = taile;
 }
 
+//------------------------------------------------------------------------------------------
+uint8_t Pacman::getNextTileXpos()
+//------------------------------------------------------------------------------------------
+{
+    uint8_t x = mDescription_.posX_;
+
+    if (mDescription_.mDirection_ == LEFT) {
+        x --;
+    }
+    if (mDescription_.mDirection_ == RIGHT) {
+        x ++;
+    }
+    return x;
+}
+
+//------------------------------------------------------------------------------------------
+uint8_t Pacman::getNextTileYpos()
+//------------------------------------------------------------------------------------------
+{
+    uint8_t y = mDescription_.posY_;
+
+    if (mDescription_.mDirection_ == UP) {
+        y --;
+    }
+    if (mDescription_.mDirection_ == DOWN) {
+        y ++;
+    }
+    return y;
+}
+
