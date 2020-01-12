@@ -6,7 +6,6 @@
 #include "projectPacman/Pacman/Pacman.hpp"
 #include "projectPacman/Tools/Types.hpp"
 
-
 class Manager {
     public:
         Manager();

@@ -10,7 +10,7 @@ Manager::Manager()
       mScore_(0)
 //------------------------------------------------------------------------------------------
 {
-    mField_.printScore(mScore_);
+
 }
 
 //------------------------------------------------------------------------------------------
@@ -33,6 +33,7 @@ void Manager::checkUserAction()
 void Manager::update()
 //------------------------------------------------------------------------------------------
 {
+    std::this_thread::sleep_for(std::chrono::milliseconds(60));
     wipeObject(mPacman_.getCoordinates());
     if (mPacman_.move()) {
         updatePacmanDirection();
@@ -45,7 +46,7 @@ void Manager::showField()
 //------------------------------------------------------------------------------------------
 {
     mField_.showField();
-    std::this_thread::sleep_for(std::chrono::milliseconds(60));
+
 }
 
 //------------------------------------------------------------------------------------------
@@ -96,7 +97,7 @@ void Manager::processingPressedButton()
 void Manager::wipeObject(COORDINATES coord)
 //------------------------------------------------------------------------------------------
 {
-    mField_.setChar(coord.first, coord.second,OBJECT_EMPTY);
+    mField_.setChar(coord,OBJECT_EMPTY);
 }
 
 //------------------------------------------------------------------------------------------

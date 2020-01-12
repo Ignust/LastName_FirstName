@@ -10,6 +10,7 @@ GameField::GameField()
 //------------------------------------------------------------------------------------------
 {
     initField();
+
 }
 
 //------------------------------------------------------------------------------------------
@@ -44,7 +45,8 @@ void GameField::setChar(const uint8_t x, const uint8_t y, const uint8_t c)
 void GameField::setChar(const COORDINATES coord,const uint8_t c)
 //------------------------------------------------------------------------------------------
 {
-    mField_[coord.second][coord.first] = c;
+        mField_[coord.second][coord.first] = c;
+        updateChar(coord, c);
 }
 
 //------------------------------------------------------------------------------------------
@@ -76,7 +78,7 @@ void GameField::resetField()
 }
 
 //------------------------------------------------------------------------------------------
-void GameField::printScore(uint32_t score)
+void GameField::printScore(const uint32_t score)
 //------------------------------------------------------------------------------------------
 {
     const uint8_t size = 10;
@@ -169,6 +171,18 @@ void GameField::printLine(const uint8_t x1, const uint8_t y1, const uint8_t x2, 
                 setChar(i, y1, BOUNDARY_SYMBOL);
             }
         }
+}
+//------------------------------------------------------------------------------------------
+void GameField::updateChar(const COORDINATES coord, const uint8_t c)
+//------------------------------------------------------------------------------------------
+{
+    TCHAR tempC = static_cast<TCHAR>(c);
+    static HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    static DWORD dw;
+    COORD chCoord;
+    chCoord.X = static_cast<SHORT>(coord.first);
+    chCoord.Y = static_cast<SHORT>(coord.second);
+    WriteConsoleOutputCharacter(hStdOut, &tempC, 1, chCoord, &dw);
 }
 
 

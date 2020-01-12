@@ -62,10 +62,11 @@ void PacmanMachine::startGame()
 //------------------------------------------------------------------------------------------
 {
     //std::cout << __PRETTY_FUNCTION__ << std::endl;
+    mManager_.showField();
     while (!mManager_.gameOver()) {
         mManager_.checkUserAction();
         mManager_.update();
-        mManager_.showField();
+
     }
 }
 
