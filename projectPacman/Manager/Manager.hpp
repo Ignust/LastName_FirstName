@@ -21,6 +21,7 @@ class Manager {
         void processingPressedButton();
         void wipeObject(COORDINATES);
         void updatePacmanDirection();
+        void checkScore();
 
         GameField mField_;
         Keybord mKeybord_;

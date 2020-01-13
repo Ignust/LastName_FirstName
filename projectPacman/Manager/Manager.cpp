@@ -1,4 +1,5 @@
 #include<thread>
+#include <istream>
 
 #include "Manager.hpp"
 
@@ -11,6 +12,7 @@ Manager::Manager()
 //------------------------------------------------------------------------------------------
 {
 
+    //mField_.printScore(mScore_);
 }
 
 //------------------------------------------------------------------------------------------
@@ -36,6 +38,7 @@ void Manager::update()
     std::this_thread::sleep_for(std::chrono::milliseconds(60));
     wipeObject(mPacman_.getCoordinates());
     if (mPacman_.move()) {
+        checkScore();
         updatePacmanDirection();
     }
     drawPacman();
@@ -45,6 +48,7 @@ void Manager::update()
 void Manager::showField()
 //------------------------------------------------------------------------------------------
 {
+    mField_.printScore(mScore_);
     mField_.showField();
 
 }
@@ -107,5 +111,13 @@ void Manager::updatePacmanDirection()
     mPacman_.setNextTile(mField_.getChar(mPacman_.getNextTileCoordinates()));
 }
 
-
+//------------------------------------------------------------------------------------------
+void Manager::checkScore()
+//------------------------------------------------------------------------------------------
+{
+    if (mField_.getChar(mPacman_.getNextTileCoordinates()) == SMALLPOINT_SYMBOL) {
+        mScore_ += 10;
+        mField_.printScore(mScore_);
+    }
+}
 

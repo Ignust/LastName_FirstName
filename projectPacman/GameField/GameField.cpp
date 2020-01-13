@@ -11,6 +11,7 @@ GameField::GameField()
 {
     initField();
 
+    printTesting();
 }
 
 //------------------------------------------------------------------------------------------
@@ -31,7 +32,6 @@ void GameField::showField()
         }
         std::cout << std::endl;
     }
-    //system("pause");
 }
 
 //------------------------------------------------------------------------------------------
@@ -62,14 +62,14 @@ uint8_t GameField::getChar(const COORDINATES coord)
 {
     return mField_[coord.second][coord.first];
 }
-
+/*
 //------------------------------------------------------------------------------------------
 void GameField::printScore()
 //------------------------------------------------------------------------------------------
 {
 
 }
-
+*/
 //------------------------------------------------------------------------------------------
 void GameField::resetField()
 //------------------------------------------------------------------------------------------
@@ -89,7 +89,8 @@ void GameField::printScore(const uint32_t score)
         const uint8_t shift_Y = SCORE_FIELD_Y_START + SCORE_FIELD_Y_SIZE / 2;
 
         for (uint8_t i = 0; i < length; ++i) {
-            setChar(shift_X + i, shift_Y, scoreString[i]);
+            COORDINATES coor(shift_X + i, shift_Y);
+            setChar(coor, scoreString[i]);
         }
 }
 
@@ -185,6 +186,23 @@ void GameField::updateChar(const COORDINATES coord, const uint8_t c)
     WriteConsoleOutputCharacter(hStdOut, &tempC, 1, chCoord, &dw);
 }
 
-
+//-----------------------------------------------------------------------------
+void GameField::printTesting()
+//-----------------------------------------------------------------------------
+{
+    //const uint8_t empty_X_place = 1;
+    const uint8_t numberOfLinesY = 2;
+    for (uint8_t i = GAME_FIELD_Y_FINISH -BOUNDARY_SIZE * 2;
+         i > GAME_FIELD_Y_FINISH - BOUNDARY_SIZE * 2 - numberOfLinesY; --i) {
+        for (uint8_t j = GAME_FIELD_X_START; j <= GAME_FIELD_X_SIZE -2; ++j) {
+            setChar(j, i, SMALLPOINT_SYMBOL);
+        }
+    }
+    /*
+        for (uint8_t i = GAME_FIELD_Y_FINISH; i >= GAME_FIELD_Y_FINISH - numberOfLinesY; --i) {
+            setChar(empty_X_place, i, 'i');
+        }
+*/
+}
 
 

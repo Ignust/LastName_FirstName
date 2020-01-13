@@ -2,7 +2,6 @@
 #define GAMEFIELD_HPP
 
 #include <vector>
-#include <stdint.h>
 
 #include "projectPacman/Tools/Types.hpp"
 
@@ -16,7 +15,7 @@ class GameField {
         void setChar(const COORDINATES,  const uint8_t c);
         uint8_t getChar(const uint8_t x, const uint8_t y);
         uint8_t getChar(const COORDINATES);
-        void printScore();
+        //void printScore();
         void resetField();
         void printScore(const uint32_t);
 
@@ -29,6 +28,7 @@ class GameField {
         void printRectangleBoudary(const uint8_t x1, const uint8_t y1, const uint8_t x2, const uint8_t y2);
         void printLine(const uint8_t x1, const uint8_t y1, const uint8_t x2, const uint8_t  y2);
         void updateChar(const COORDINATES, const uint8_t c);
+        void printTesting();
 
         std::vector <std::vector<uint8_t>> mField_;
 };

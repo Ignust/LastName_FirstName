@@ -66,7 +66,6 @@ void PacmanMachine::startGame()
     while (!mManager_.gameOver()) {
         mManager_.checkUserAction();
         mManager_.update();
-
     }
 }
 
