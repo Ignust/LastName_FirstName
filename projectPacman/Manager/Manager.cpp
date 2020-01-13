@@ -74,26 +74,39 @@ void Manager::drawPacman()
 void Manager::processingPressedButton()
 //------------------------------------------------------------------------------------------
 {
+    COORDINATES rotation(mPacman_.getCoordinates());
     switch (mKeybord_.getButtons()) {
     case A_Button:
     case Left_Button:
-        mPacman_.goLeft();
-        updatePacmanDirection();
+        rotation.first--;
+        if (checkRotation(rotation)) {
+            mPacman_.goLeft();
+            updatePacmanDirection();
+        }
         break;
     case D_Button:
     case Right_Button:
-        mPacman_.goRight();
-        updatePacmanDirection();
+        rotation.first++;
+        if (checkRotation(rotation)) {
+            mPacman_.goRight();
+            updatePacmanDirection();
+        }
         break;
     case S_Button:
     case Down_Button:
-        mPacman_.goDown();
-        updatePacmanDirection();
+        rotation.second++;
+        if (checkRotation(rotation)) {
+            mPacman_.goDown();
+            updatePacmanDirection();
+        }
         break;
     case W_Button:
     case UP_Button:
-        mPacman_.goUp();
-        updatePacmanDirection();
+        rotation.second--;
+        if (checkRotation(rotation)) {
+            mPacman_.goUp();
+            updatePacmanDirection();
+        }
         break;
     default:
         break;
@@ -137,3 +150,14 @@ void Manager::checkTunnel()
         mPacman_.goTunnel(TUNNEL_2);
     }
 }
+
+//------------------------------------------------------------------------------------------
+bool Manager::checkRotation(const COORDINATES rotation)
+//------------------------------------------------------------------------------------------
+{
+    if (mField_.getChar(rotation) != BOUNDARY_SYMBOL) {
+        return true;
+    }
+    return  false;
+}
+

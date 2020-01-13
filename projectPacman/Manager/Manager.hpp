@@ -23,6 +23,7 @@ class Manager {
         void updatePacmanDirection();
         void checkScore();
         void checkTunnel();
+        bool checkRotation(const COORDINATES rotation);
 
         GameField mField_;
         Keybord mKeybord_;
