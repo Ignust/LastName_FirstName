@@ -36,7 +36,7 @@ void Manager::checkUserAction()
 void Manager::update()
 //------------------------------------------------------------------------------------------
 {
-    std::this_thread::sleep_for(std::chrono::milliseconds(120));
+    std::this_thread::sleep_for(std::chrono::milliseconds(180));
     wipeObject(mPacman_.getCoordinates());
     if (mPacman_.move()) {
         checkScore();
@@ -133,6 +133,10 @@ void Manager::checkScore()
 {
     if (mField_.getChar(mPacman_.getNextTileCoordinates()) == SMALLPOINT_SYMBOL) {
         mScore_ += 10;
+        mField_.printScore(mScore_);
+    }
+    if (mField_.getChar(mPacman_.getNextTileCoordinates()) == ENERGIZER_SYMBOL) {
+        mScore_ += 50;
         mField_.printScore(mScore_);
     }
 }

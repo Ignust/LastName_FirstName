@@ -140,6 +140,7 @@ void GameField::printGameField()
 
     printTunnel();
     initGameField();
+    printEnergizers();
 
     printRectangXY(GAME_OBJECT_1_X,GAME_OBJECT_1_Y, GAME_OBJECT_1_SIZE_X,GAME_OBJECT_1_SIZE_Y);
     printRectangXY(GAME_OBJECT_2_X,GAME_OBJECT_2_Y, GAME_OBJECT_2_SIZE_X,GAME_OBJECT_2_SIZE_Y);
@@ -309,4 +310,20 @@ void GameField::printTunnel()
     setChar(TUNNEL_1_X, TUNNEL_1_Y, OBJECT_EMPTY);
     setChar(TUNNEL_2_X,TUNNEL_2_Y, OBJECT_EMPTY);
 }
+
+//------------------------------------------------------------------------------------------
+void GameField::printEnergizers()
+//------------------------------------------------------------------------------------------
+{
+    setChar(GAME_FIELD_X_START,
+            GAME_FIELD_Y_START + BOUNDARY_SIZE * 2, ENERGIZER_SYMBOL);
+    setChar(GAME_FIELD_X_START+GAME_FIELD_X_SIZE - BOUNDARY_SIZE * 3,
+            GAME_FIELD_Y_START + BOUNDARY_SIZE *2, ENERGIZER_SYMBOL);
+    setChar(GAME_FIELD_X_START,
+            GAME_FIELD_Y_START +GAME_FIELD_Y_SIZE - 9, ENERGIZER_SYMBOL);
+    setChar(GAME_FIELD_X_START+GAME_FIELD_X_SIZE - BOUNDARY_SIZE *3,
+            GAME_FIELD_Y_START +GAME_FIELD_Y_SIZE - 9, ENERGIZER_SYMBOL);
+}
+
+
 

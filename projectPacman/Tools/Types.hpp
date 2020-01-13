@@ -15,6 +15,7 @@
 #define OBJECT_SYMBOL       0x260A
 #define PACMAN_SYMBOL       64
 #define OBJECT_EMPTY        0x0020
+#define ENERGIZER_SYMBOL    'o'
 
 #define BOUNDARY_SIZE           1
 
