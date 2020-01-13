@@ -35,6 +35,7 @@ class GameField {
         void printRectangXY(const uint8_t x, const uint8_t y,const uint8_t sizX, const uint8_t sizY);
         void printTunnel();
         void printEnergizers();
+        void printGameObject();
 
         std::vector <std::vector<uint8_t>> mField_;
 };

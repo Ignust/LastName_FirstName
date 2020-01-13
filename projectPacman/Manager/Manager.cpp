@@ -9,7 +9,10 @@ Manager::Manager()
       mKeybord_(),
       mPacman_(),
       mScore_(0),
-      mLives_(INIT_LIVES)
+      mLives_(INIT_LIVES),
+      mSmallPoints_(SMALLPOINT_AMOUNT),
+      mMazeLevel_(INIT_MAZE_LEVEL),
+      mGameOver_(false)
 //------------------------------------------------------------------------------------------
 {
 
@@ -37,13 +40,17 @@ void Manager::update()
 //------------------------------------------------------------------------------------------
 {
     std::this_thread::sleep_for(std::chrono::milliseconds(180));
-    wipeObject(mPacman_.getCoordinates());
-    if (mPacman_.move()) {
-        checkScore();
-        checkTunnel();
-        updatePacmanDirection();
+    if (mSmallPoints_ > 0) {
+        wipeObject(mPacman_.getCoordinates());
+        if (mPacman_.move()) {
+            checkScore();
+            checkTunnel();
+            updatePacmanDirection();
+        }
+        drawPacman();
+    } else {
+        nextLevel();
     }
-    drawPacman();
 }
 
 //------------------------------------------------------------------------------------------
@@ -60,7 +67,17 @@ void Manager::showField()
 bool Manager::gameOver()
 //------------------------------------------------------------------------------------------
 {
-    return false;
+    return mGameOver_;
+}
+
+//------------------------------------------------------------------------------------------
+void Manager::resetGame()
+//------------------------------------------------------------------------------------------
+{
+    resetLevel();
+    mLives_ = INIT_LIVES;
+    mMazeLevel_ = INIT_MAZE_LEVEL;
+    mGameOver_ = false;
 }
 
 //------------------------------------------------------------------------------------------
@@ -134,6 +151,7 @@ void Manager::checkScore()
     if (mField_.getChar(mPacman_.getNextTileCoordinates()) == SMALLPOINT_SYMBOL) {
         mScore_ += 10;
         mField_.printScore(mScore_);
+        mSmallPoints_--;
     }
     if (mField_.getChar(mPacman_.getNextTileCoordinates()) == ENERGIZER_SYMBOL) {
         mScore_ += 50;
@@ -165,3 +183,26 @@ bool Manager::checkRotation(const COORDINATES rotation)
     return  false;
 }
 
+//------------------------------------------------------------------------------------------
+void Manager::nextLevel()
+//------------------------------------------------------------------------------------------
+{
+    mMazeLevel_++;
+    if (mMazeLevel_ > MAZE_LEVEL_AMOUNT){
+        mGameOver_ = true;
+        return;
+    }
+
+    resetLevel();
+}
+
+//------------------------------------------------------------------------------------------
+void Manager::resetLevel()
+//------------------------------------------------------------------------------------------
+{
+    wipeObject(mPacman_.getCoordinates());
+    mField_.resetField();
+    mField_.showField();
+    mPacman_.resetPosition();
+    mSmallPoints_ = SMALLPOINT_AMOUNT;
+}

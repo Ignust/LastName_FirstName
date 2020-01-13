@@ -54,7 +54,7 @@ void PacmanMachine::showMenu()
             showMenu();
             break;
     }
-
+    showMenu();
 }
 
 //------------------------------------------------------------------------------------------
@@ -67,6 +67,13 @@ void PacmanMachine::startGame()
         mManager_.checkUserAction();
         mManager_.update();
     }
+
+    mManager_.resetGame();
+
+    system("cls");
+    std::cout << "GAME OVER" << std::endl;
+    system("pause");
+    system("cls");
 }
 
 //------------------------------------------------------------------------------------------

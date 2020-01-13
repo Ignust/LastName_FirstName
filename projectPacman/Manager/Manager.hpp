@@ -15,7 +15,7 @@ class Manager {
         void update();
         void showField();
         bool gameOver();
-
+        void resetGame();
     private:
         void drawPacman();
         void processingPressedButton();
@@ -24,12 +24,17 @@ class Manager {
         void checkScore();
         void checkTunnel();
         bool checkRotation(const COORDINATES rotation);
+        void nextLevel();
+        void resetLevel();
 
         GameField mField_;
         Keybord mKeybord_;
         Pacman mPacman_;
         uint32_t mScore_;
-        uint8_t mLives_;
+        uint32_t mLives_;
+        uint8_t mSmallPoints_;
+        uint8_t mMazeLevel_;
+        bool mGameOver_;
 };
 
 #endif // MANAGER_HPP

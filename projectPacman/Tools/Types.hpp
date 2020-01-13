@@ -4,11 +4,14 @@
 #include <utility>
 #include <stdint.h>
 
-#define INIT_LIVES 3
+#define INIT_LIVES          3
+#define INIT_MAZE_LEVEL     1
 #define X_SIZE              29
 #define Y_SIZE              39
 
 #define BOTTOM_LINE_SIZE    3
+#define SMALLPOINT_AMOUNT   10
+#define MAZE_LEVEL_AMOUNT   255
 
 #define SMALLPOINT_SYMBOL   0x002E
 #define BOUNDARY_SYMBOL     0x0023
