@@ -27,6 +27,7 @@ class Manager {
         Keybord mKeybord_;
         Pacman mPacman_;
         uint32_t mScore_;
+        uint8_t mLives_;
 };
 
 #endif // MANAGER_HPP

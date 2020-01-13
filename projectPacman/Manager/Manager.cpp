@@ -8,7 +8,8 @@ Manager::Manager()
     : mField_(),
       mKeybord_(),
       mPacman_(),
-      mScore_(0)
+      mScore_(0),
+      mLives_(INIT_LIVES)
 //------------------------------------------------------------------------------------------
 {
 
@@ -49,6 +50,7 @@ void Manager::showField()
 //------------------------------------------------------------------------------------------
 {
     mField_.printScore(mScore_);
+    mField_.printLives(mLives_);
     mField_.showField();
 
 }

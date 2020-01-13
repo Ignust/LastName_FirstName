@@ -95,12 +95,30 @@ void GameField::printScore(const uint32_t score)
 }
 
 //------------------------------------------------------------------------------------------
+void GameField::printLives(const uint32_t score)
+//------------------------------------------------------------------------------------------
+{
+    const uint8_t size = 10;
+        wchar_t scoreString[size] = {};
+        swprintf_s(scoreString, L"%d", score);
+        const uint8_t length = wcslen(scoreString);
+        const uint8_t shift_X = LIVES_FIELD_X_START + 10;
+        const uint8_t shift_Y = LIVES_FIELD_Y_START + LIVES_FIELD_Y_SIZE / 2;
+
+        for (uint8_t i = 0; i < length; ++i) {
+            COORDINATES coor(shift_X + i, shift_Y);
+            setChar(coor, scoreString[i]);
+        }
+}
+
+//------------------------------------------------------------------------------------------
 void GameField::initField()
 //------------------------------------------------------------------------------------------
 {
     initFieldSize();
     printGameField();
     printScoreField();
+    printLivesField();
 
 }
 
@@ -128,11 +146,13 @@ void GameField::printScoreField()
 {
     printRectangleBoudary(SCORE_FIELD_X_START, SCORE_FIELD_Y_START,
                           SCORE_FIELD_X_FINISH, SCORE_FIELD_Y_FINISH);
-    printScoreTitle(L">Score:");
+    //printScoreTitle(L">Score:");
+    printTitle(SCORE_FIELD_X_START + 2, SCORE_FIELD_Y_START + SCORE_FIELD_Y_SIZE / 2,
+               L">Score:");
 }
 
 //------------------------------------------------------------------------------------------
-void GameField::printScoreTitle(const wchar_t* line)
+void GameField::printTitle(const uint8_t x, const uint8_t y, const wchar_t* line)
 //------------------------------------------------------------------------------------------
 {
     if (line == nullptr) {
@@ -140,8 +160,8 @@ void GameField::printScoreTitle(const wchar_t* line)
     }
 
     const uint8_t length = wcslen(line);
-    const uint8_t shift_X = SCORE_FIELD_X_START + 2;
-    const uint8_t shift_Y = SCORE_FIELD_Y_START + SCORE_FIELD_Y_SIZE / 2;
+    const uint8_t shift_X = x;
+    const uint8_t shift_Y = y;
 
     for (uint8_t i = 0; i < length; ++i) {
         setChar(shift_X + i, shift_Y, line[i]);
@@ -186,9 +206,9 @@ void GameField::updateChar(const COORDINATES coord, const uint8_t c)
     WriteConsoleOutputCharacter(hStdOut, &tempC, 1, chCoord, &dw);
 }
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------
 void GameField::printTesting()
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------
 {
     //const uint8_t empty_X_place = 1;
     const uint8_t numberOfLinesY = 2;
@@ -205,4 +225,12 @@ void GameField::printTesting()
 */
 }
 
-
+//------------------------------------------------------------------------------------------
+void GameField::printLivesField()
+//------------------------------------------------------------------------------------------
+{
+    printRectangleBoudary(LIVES_FIELD_X_START, LIVES_FIELD_Y_START,
+                          LIVES_FIELD_X_FINISH, LIVES_FIELD_Y_FINISH);
+    printTitle(LIVES_FIELD_X_START + 2, LIVES_FIELD_Y_START + SCORE_FIELD_Y_SIZE / 2,
+               L">Lives:");
+}
