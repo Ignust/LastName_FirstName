@@ -36,7 +36,7 @@ void Manager::checkUserAction()
 void Manager::update()
 //------------------------------------------------------------------------------------------
 {
-    std::this_thread::sleep_for(std::chrono::milliseconds(60));
+    std::this_thread::sleep_for(std::chrono::milliseconds(120));
     wipeObject(mPacman_.getCoordinates());
     if (mPacman_.move()) {
         checkScore();

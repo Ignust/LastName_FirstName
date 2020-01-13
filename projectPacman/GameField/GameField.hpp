@@ -24,6 +24,7 @@ class GameField {
         void initField();
         void initFieldSize();
         void printGameField();
+        void initGameField();
         void printScoreField();
         void printTitle(const uint8_t x, const uint8_t y, const wchar_t* line);
         void printRectangleBoudary(const uint8_t x1, const uint8_t y1, const uint8_t x2, const uint8_t y2);
@@ -31,6 +32,7 @@ class GameField {
         void updateChar(const COORDINATES, const uint8_t c);
         void printTesting();
         void printLivesField();
+        void printRectangXY(const uint8_t x, const uint8_t y,const uint8_t sizX, const uint8_t sizY);
 
         std::vector <std::vector<uint8_t>> mField_;
 };
