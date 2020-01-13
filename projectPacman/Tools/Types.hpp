@@ -18,6 +18,11 @@
 
 #define BOUNDARY_SIZE           1
 
+#define TUNNEL_1_X      GAME_FIELD_X_START -1
+#define TUNNEL_1_Y      GAME_FIELD_Y_START + GAME_FIELD_Y_SIZE/2 - BOUNDARY_SIZE * 2
+#define TUNNEL_2_X      GAME_FIELD_X_START + GAME_FIELD_X_SIZE - BOUNDARY_SIZE * 2
+#define TUNNEL_2_Y      GAME_FIELD_Y_START + GAME_FIELD_Y_SIZE/2 - BOUNDARY_SIZE * 2
+
 #define GAME_FIELD_X_SIZE       28
 #define GAME_FIELD_Y_SIZE       31
 #define SCORE_FIELD_X_SIZE      GAME_FIELD_X_SIZE
@@ -213,6 +218,11 @@ enum E_BUTTONS {
     UP_Button =     72,
     Spase_Button =  32,
     Auto_Button =   0
+};
+
+enum E_TUNNEL {
+    TUNNEL_1 =  1,
+    TUNNEL_2 =  2
 };
 
 

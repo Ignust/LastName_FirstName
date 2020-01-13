@@ -40,6 +40,7 @@ void Manager::update()
     wipeObject(mPacman_.getCoordinates());
     if (mPacman_.move()) {
         checkScore();
+        checkTunnel();
         updatePacmanDirection();
     }
     drawPacman();
@@ -123,3 +124,16 @@ void Manager::checkScore()
     }
 }
 
+//------------------------------------------------------------------------------------------
+void Manager::checkTunnel()
+//------------------------------------------------------------------------------------------
+{
+    uint8_t x = mPacman_.getCoordinates().first;
+    uint8_t y = mPacman_.getCoordinates().second;
+    if (x == TUNNEL_1_X && y == TUNNEL_1_Y) {
+        mPacman_.goTunnel(TUNNEL_1);
+    }
+    if (x == TUNNEL_2_X && y == TUNNEL_2_Y) {
+        mPacman_.goTunnel(TUNNEL_2);
+    }
+}

@@ -113,3 +113,19 @@ COORDINATES Pacman::getNextTileCoordinates()
     return nextTaile;
 }
 
+//------------------------------------------------------------------------------------------
+void Pacman::goTunnel(const E_TUNNEL tunnel)
+//------------------------------------------------------------------------------------------
+{
+    if (tunnel == TUNNEL_1) {
+        mDescription_.mCoordinates_.first = TUNNEL_2_X;
+        mDescription_.mCoordinates_.second = TUNNEL_2_Y;
+    }
+    if (tunnel == TUNNEL_2) {
+        mDescription_.mCoordinates_.first = TUNNEL_1_X;
+        mDescription_.mCoordinates_.second = TUNNEL_1_Y;
+    }
+}
+
+
+

@@ -137,6 +137,8 @@ void GameField::printGameField()
 {
     printRectangleBoudary(GAME_FIELD_X_START, GAME_FIELD_Y_START,
                           GAME_FIELD_X_FINISH, GAME_FIELD_Y_FINISH);
+
+    printTunnel();
     initGameField();
 
     printRectangXY(GAME_OBJECT_1_X,GAME_OBJECT_1_Y, GAME_OBJECT_1_SIZE_X,GAME_OBJECT_1_SIZE_Y);
@@ -298,6 +300,13 @@ void GameField::printRectangXY(const uint8_t x, const uint8_t y, const uint8_t s
             setChar(x + i, y + b, BOUNDARY_SYMBOL);
         }
     }
+}
 
+//------------------------------------------------------------------------------------------
+void GameField::printTunnel()
+//------------------------------------------------------------------------------------------
+{
+    setChar(TUNNEL_1_X, TUNNEL_1_Y, OBJECT_EMPTY);
+    setChar(TUNNEL_2_X,TUNNEL_2_Y, OBJECT_EMPTY);
 }
 

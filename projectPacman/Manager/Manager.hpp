@@ -22,6 +22,7 @@ class Manager {
         void wipeObject(COORDINATES);
         void updatePacmanDirection();
         void checkScore();
+        void checkTunnel();
 
         GameField mField_;
         Keybord mKeybord_;
