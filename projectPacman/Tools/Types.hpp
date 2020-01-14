@@ -10,7 +10,7 @@
 #define Y_SIZE              39
 
 #define BOTTOM_LINE_SIZE    3
-#define SMALLPOINT_AMOUNT   50//23
+#define SMALLPOINT_AMOUNT   69//23
 #define MAZE_LEVEL_AMOUNT   255
 
 #define SMALLPOINT_SYMBOL   0x002E
