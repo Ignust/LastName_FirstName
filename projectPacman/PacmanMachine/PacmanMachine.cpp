@@ -69,7 +69,7 @@ void PacmanMachine::startGame()
 
     mManager_.showField();
     system("pause");
-    timer.start(std::chrono::milliseconds(40),[this](){ mManager_.update();});
+    timer.start(std::chrono::milliseconds(240),[this](){ mManager_.update();});
     while (!mManager_.gameOver()) {
         mManager_.checkUserAction();
         //mManager_.update();
