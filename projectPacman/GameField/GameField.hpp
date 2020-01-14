@@ -15,7 +15,6 @@ class GameField {
         void setChar(const COORDINATES,  const uint8_t c);
         uint8_t getChar(const uint8_t x, const uint8_t y);
         uint8_t getChar(const COORDINATES);
-        //void printScore();
         void resetField();
         void printScore(const uint32_t);
         void printLives(const uint32_t);

@@ -135,7 +135,7 @@ void Manager::processingPressedButton()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::wipeObject(COORDINATES coord)
+void Manager::wipeObject(const COORDINATES coord)
 //------------------------------------------------------------------------------------------
 {
     mField_.setChar(coord,OBJECT_EMPTY);

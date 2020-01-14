@@ -19,7 +19,7 @@ class Manager {
     private:
         void drawPacman();
         void processingPressedButton();
-        void wipeObject(COORDINATES);
+        void wipeObject(const COORDINATES);
         void updatePacmanDirection();
         void checkScore();
         void checkTunnel();

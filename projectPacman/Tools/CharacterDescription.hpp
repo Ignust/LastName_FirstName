@@ -15,8 +15,6 @@ enum E_DIRECTION {
 
 struct CharacterDescription {
     E_DIRECTION mDirection_;
-    //uint8_t posX_;
-    //uint8_t posY_;
     uint8_t nextTile_;
     std::pair<uint8_t,uint8_t> mCoordinates_;
 
