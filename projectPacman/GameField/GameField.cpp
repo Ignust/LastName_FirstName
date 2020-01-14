@@ -152,11 +152,14 @@ void GameField::printGameField()
 void GameField::initGameField()
 //------------------------------------------------------------------------------------------
 {
+    printTesting();
+    /*
     for (auto y = GAME_FIELD_Y_START; y < GAME_FIELD_Y_SIZE + BOUNDARY_SIZE * 3; ++y) {
         for (auto x = GAME_FIELD_X_START; x < GAME_FIELD_X_SIZE -1 ; ++x) {
             setChar(x, y ,SMALLPOINT_SYMBOL);
         }
     }
+    */
 }
 
 //------------------------------------------------------------------------------------------
@@ -228,19 +231,13 @@ void GameField::updateChar(const COORDINATES coord, const uint8_t c)
 void GameField::printTesting()
 //------------------------------------------------------------------------------------------
 {
-    //const uint8_t empty_X_place = 1;
-    const uint8_t numberOfLinesY = 2;
-    for (auto i = GAME_FIELD_Y_FINISH -BOUNDARY_SIZE * 2;
-         i > GAME_FIELD_Y_FINISH - BOUNDARY_SIZE * 2 - numberOfLinesY; --i) {
-        for (auto j = GAME_FIELD_X_START; j <= GAME_FIELD_X_SIZE -2; ++j) {
-            setChar(j, i, SMALLPOINT_SYMBOL);
+    uint8_t x = GAME_OBJECT_12_X ;
+    uint8_t y = GAME_OBJECT_12_Y+2;
+    for (uint8_t i = 0; i < 10; ++i) {
+        for (uint8_t b = 0; b < 7; ++b) {
+            setChar(x + i, y + b, SMALLPOINT_SYMBOL);
         }
     }
-    /*
-        for (uint8_t i = GAME_FIELD_Y_FINISH; i >= GAME_FIELD_Y_FINISH - numberOfLinesY; --i) {
-            setChar(empty_X_place, i, 'i');
-        }
-*/
 }
 
 //------------------------------------------------------------------------------------------

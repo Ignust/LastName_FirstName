@@ -1,7 +1,9 @@
 #include <iostream>
 #include <windows.h>
+#include <thread>
 
 #include "PacmanMachine.hpp"
+#include <projectPacman/Timer/Timer.hpp>
 
 //------------------------------------------------------------------------------------------
 PacmanMachine::PacmanMachine()
@@ -62,12 +64,17 @@ void PacmanMachine::startGame()
 //------------------------------------------------------------------------------------------
 {
     //std::cout << __PRETTY_FUNCTION__ << std::endl;
+    utils::Timer timer;
+
+
     mManager_.showField();
+    system("pause");
+    timer.start(std::chrono::milliseconds(40),[this](){ mManager_.update();});
     while (!mManager_.gameOver()) {
         mManager_.checkUserAction();
-        mManager_.update();
+        //mManager_.update();
     }
-
+    timer.stop();
     mManager_.resetGame();
 
     system("cls");

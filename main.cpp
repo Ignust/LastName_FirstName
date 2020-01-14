@@ -4,7 +4,7 @@
 
 int main()
 {
-    std::system("mode con cols=40 lines=40");
+    std::system("mode con cols=40 lines=45");
     PacmanMachine game;
     game.run();
 

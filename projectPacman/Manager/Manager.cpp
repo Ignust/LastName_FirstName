@@ -16,7 +16,6 @@ Manager::Manager()
 //------------------------------------------------------------------------------------------
 {
 
-    //mField_.printScore(mScore_);
 }
 
 //------------------------------------------------------------------------------------------
@@ -39,13 +38,14 @@ void Manager::checkUserAction()
 void Manager::update()
 //------------------------------------------------------------------------------------------
 {
-    std::this_thread::sleep_for(std::chrono::milliseconds(180));
+    //std::this_thread::sleep_for(std::chrono::milliseconds(30));
     if (mSmallPoints_ > 0) {
+        updatePacmanDirection();
         wipeObject(mPacman_.getCoordinates());
         if (mPacman_.move()) {
             checkScore();
             checkTunnel();
-            updatePacmanDirection();
+            //updatePacmanDirection();
         }
         drawPacman();
     } else {
@@ -98,7 +98,8 @@ void Manager::processingPressedButton()
         rotation.first--;
         if (checkRotation(rotation)) {
             mPacman_.goLeft();
-            updatePacmanDirection();
+            //updatePacmanDirection();
+
         }
         break;
     case D_Button:
@@ -106,7 +107,8 @@ void Manager::processingPressedButton()
         rotation.first++;
         if (checkRotation(rotation)) {
             mPacman_.goRight();
-            updatePacmanDirection();
+            //updatePacmanDirection();
+
         }
         break;
     case S_Button:
@@ -114,7 +116,8 @@ void Manager::processingPressedButton()
         rotation.second++;
         if (checkRotation(rotation)) {
             mPacman_.goDown();
-            updatePacmanDirection();
+            //updatePacmanDirection();
+
         }
         break;
     case W_Button:
@@ -122,7 +125,8 @@ void Manager::processingPressedButton()
         rotation.second--;
         if (checkRotation(rotation)) {
             mPacman_.goUp();
-            updatePacmanDirection();
+            //updatePacmanDirection();
+
         }
         break;
     default:
@@ -152,6 +156,7 @@ void Manager::checkScore()
         mScore_ += 10;
         mField_.printScore(mScore_);
         mSmallPoints_--;
+        //std::cout << static_cast<int>(mSmallPoints_) << " ";
     }
     if (mField_.getChar(mPacman_.getNextTileCoordinates()) == ENERGIZER_SYMBOL) {
         mScore_ += 50;
