@@ -156,7 +156,7 @@ void Manager::checkScore()
         mScore_ += 10;
         mField_.printScore(mScore_);
         mSmallPoints_--;
-        std::cout << static_cast<int>(mSmallPoints_) << " ";
+        //std::cout << static_cast<int>(mSmallPoints_) << " ";
     }
     if (mField_.getChar(mPacman_.getNextTileCoordinates()) == ENERGIZER_SYMBOL) {
         mScore_ += 50;
