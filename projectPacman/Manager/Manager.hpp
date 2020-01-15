@@ -27,10 +27,10 @@ class Manager {
         bool checkRotation(const COORDINATES&);
         void nextLevel();
         void resetLevel();
-        void PacmanGoLeft();
-        void PacmanGoRight();
-        void PacmanGoDown();
-        void PacmanGoUp();
+        void CharacterGoLeft(CHARACTER);
+        void CharacterGoRight(CHARACTER);
+        void CharacterGoDown(CHARACTER);
+        void CharacterGoUp(CHARACTER);
         void updatePacman();
         void updateGhosts();
         void drawCharacter(CHARACTER);

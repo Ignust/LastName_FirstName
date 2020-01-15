@@ -83,19 +83,19 @@ void Manager::processingPressedButton()
     switch (mKeybord_.getButtons()) {
     case A_Button:
     case Left_Button:
-        PacmanGoLeft();
+        CharacterGoLeft(mPacman_);
         break;
     case D_Button:
     case Right_Button:
-        PacmanGoRight();
+        CharacterGoRight(mPacman_);
         break;
     case S_Button:
     case Down_Button:
-        PacmanGoDown();
+        CharacterGoDown(mPacman_);
         break;
     case W_Button:
     case UP_Button:
-        PacmanGoUp();
+        CharacterGoUp(mPacman_);
         break;
     default:
         break;
@@ -171,46 +171,46 @@ void Manager::resetLevel()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::PacmanGoLeft()
+void Manager::CharacterGoLeft(CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(mPacman_->getCoordinates());
+    COORDINATES rotation(character->getCoordinates());
     rotation.first--;
     if (checkRotation(rotation)) {
-        mPacman_->goLeft();
+        character->goLeft();
     }
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::PacmanGoRight()
+void Manager::CharacterGoRight(CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(mPacman_->getCoordinates());
+    COORDINATES rotation(character->getCoordinates());
     rotation.first++;
     if (checkRotation(rotation)) {
-        mPacman_->goRight();
+        character->goRight();
     }
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::PacmanGoDown()
+void Manager::CharacterGoDown(CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(mPacman_->getCoordinates());
+    COORDINATES rotation(character->getCoordinates());
     rotation.second++;
     if (checkRotation(rotation)) {
-        mPacman_->goDown();
+        character->goDown();
     }
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::PacmanGoUp()
+void Manager::CharacterGoUp(CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(mPacman_->getCoordinates());
+    COORDINATES rotation(character->getCoordinates());
     rotation.second--;
     if (checkRotation(rotation)) {
-        mPacman_->goUp();
+        character->goUp();
     }
 }
 
