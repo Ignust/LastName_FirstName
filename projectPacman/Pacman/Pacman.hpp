@@ -11,7 +11,7 @@ class Pacman: public ICharacter {
 
         virtual bool move();
         virtual void resetPosition();
-        virtual COORDINATES getCoordinates();
+        virtual COORDINATES getCoordinates()const;
         virtual void goUp();
         virtual void goLeft();
         virtual void goDown();
@@ -19,7 +19,7 @@ class Pacman: public ICharacter {
         virtual void setNextTile(uint8_t);
         virtual COORDINATES getNextTileCoordinates();
         virtual void goTunnel(const E_TUNNEL tunnel);
-        virtual uint8_t getPrintSymbol();
+        virtual uint8_t getPrintSymbol()const;
 
         private:
         CharacterDescription mDescription_;

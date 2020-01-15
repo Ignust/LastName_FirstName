@@ -53,7 +53,7 @@ void Ghost::resetPosition()
 }
 
 //------------------------------------------------------------------------------------------
-COORDINATES Ghost::getCoordinates()
+COORDINATES Ghost::getCoordinates()const
 //------------------------------------------------------------------------------------------
 {
     return mDescription_.mCoordinates_;
@@ -129,7 +129,7 @@ void Ghost::goTunnel(const E_TUNNEL tunnel)
 }
 
 //------------------------------------------------------------------------------------------
-uint8_t Ghost::getPrintSymbol()
+uint8_t Ghost::getPrintSymbol()const
 //------------------------------------------------------------------------------------------
 {
     return mDescription_.mPrintSymbol_;

@@ -53,7 +53,7 @@ void Pacman::resetPosition()
 }
 
 //------------------------------------------------------------------------------------------
-COORDINATES Pacman::getCoordinates()
+COORDINATES Pacman::getCoordinates()const
 //------------------------------------------------------------------------------------------
 {
     return mDescription_.mCoordinates_;
@@ -129,7 +129,7 @@ void Pacman::goTunnel(const E_TUNNEL tunnel)
 }
 
 //------------------------------------------------------------------------------------------
-uint8_t Pacman::getPrintSymbol()
+uint8_t Pacman::getPrintSymbol()const
 //------------------------------------------------------------------------------------------
 {
     return mDescription_.mPrintSymbol_;

@@ -1,8 +1,6 @@
 #ifndef MANAGER_HPP
 #define MANAGER_HPP
 
-#include <memory>
-
 #include "projectPacman/GameField/GameField.hpp"
 #include "projectPacman/Keybord/Keybord.hpp"
 #include "projectPacman/Pacman/Pacman.hpp"
@@ -20,11 +18,10 @@ class Manager {
         void showField();
         bool gameOver();
         void resetGame();
+
     private:
-        void drawPacman();
         void processingPressedButton();
-        void wipeObject(const COORDINATES);
-        void updatePacmanDirection();
+        void wipeObject(CHARACTER);
         void checkScore();
         void checkTunnel();
         bool checkRotation(const COORDINATES&);
@@ -36,18 +33,18 @@ class Manager {
         void PacmanGoUp();
         void updatePacman();
         void updateGhosts();
-        void drawCharacter(std::shared_ptr<ICharacter>);
+        void drawCharacter(CHARACTER);
+        void updateCharacterDirection(CHARACTER);
 
         GameField mField_;
         Keybord mKeybord_;
-        Pacman mPacman_;
+        CHARACTER mPacman_;
         uint32_t mScore_;
         uint32_t mLives_;
         uint8_t mSmallPoints_;
         uint8_t mMazeLevel_;
         bool mGameOver_;
-        //Ghost mBlinky_;
-        std::shared_ptr<ICharacter> mBlinky_;
+        CHARACTER mBlinky_;
 };
 
 #endif // MANAGER_HPP

@@ -7,7 +7,7 @@
 Manager::Manager()
     : mField_(),
       mKeybord_(),
-      mPacman_(),
+      mPacman_(new Pacman),
       mScore_(0),
       mLives_(INIT_LIVES),
       mSmallPoints_(SMALLPOINT_AMOUNT),
@@ -77,13 +77,6 @@ void Manager::resetGame()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::drawPacman()
-//------------------------------------------------------------------------------------------
-{
-    mField_.setChar(mPacman_.getCoordinates(),PACMAN_SYMBOL);
-}
-
-//------------------------------------------------------------------------------------------
 void Manager::processingPressedButton()
 //------------------------------------------------------------------------------------------
 {
@@ -110,30 +103,23 @@ void Manager::processingPressedButton()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::wipeObject(const COORDINATES coord)
+void Manager::wipeObject(CHARACTER coord)
 //------------------------------------------------------------------------------------------
 {
-    mField_.setChar(coord,OBJECT_EMPTY);
-}
-
-//------------------------------------------------------------------------------------------
-void Manager::updatePacmanDirection()
-//------------------------------------------------------------------------------------------
-{
-    mPacman_.setNextTile(mField_.getChar(mPacman_.getNextTileCoordinates()));
+    mField_.setChar(coord->getCoordinates(),OBJECT_EMPTY);
 }
 
 //------------------------------------------------------------------------------------------
 void Manager::checkScore()
 //------------------------------------------------------------------------------------------
 {
-    if (mField_.getChar(mPacman_.getCoordinates()) == SMALLPOINT_SYMBOL) {
+    if (mField_.getChar(mPacman_->getCoordinates()) == SMALLPOINT_SYMBOL) {
         mScore_ += 10;
         mField_.printScore(mScore_);
         mSmallPoints_--;
         //std::cout << static_cast<int>(mSmallPoints_) << " ";
     }
-    if (mField_.getChar(mPacman_.getNextTileCoordinates()) == ENERGIZER_SYMBOL) {
+    if (mField_.getChar(mPacman_->getNextTileCoordinates()) == ENERGIZER_SYMBOL) {
         mScore_ += 50;
         mField_.printScore(mScore_);
     }
@@ -143,13 +129,13 @@ void Manager::checkScore()
 void Manager::checkTunnel()
 //------------------------------------------------------------------------------------------
 {
-    uint8_t x = mPacman_.getCoordinates().first;
-    uint8_t y = mPacman_.getCoordinates().second;
+    uint8_t x = mPacman_->getCoordinates().first;
+    uint8_t y = mPacman_->getCoordinates().second;
     if (x == TUNNEL_1_X && y == TUNNEL_1_Y) {
-        mPacman_.goTunnel(TUNNEL_1);
+        mPacman_->goTunnel(TUNNEL_1);
     }
     if (x == TUNNEL_2_X && y == TUNNEL_2_Y) {
-        mPacman_.goTunnel(TUNNEL_2);
+        mPacman_->goTunnel(TUNNEL_2);
     }
 }
 
@@ -177,10 +163,10 @@ void Manager::nextLevel()
 void Manager::resetLevel()
 //------------------------------------------------------------------------------------------
 {
-    wipeObject(mPacman_.getCoordinates());
+    wipeObject(mPacman_);
     mField_.resetField();
     mField_.showField();
-    mPacman_.resetPosition();
+    mPacman_->resetPosition();
     mSmallPoints_ = SMALLPOINT_AMOUNT;
 }
 
@@ -188,10 +174,10 @@ void Manager::resetLevel()
 void Manager::PacmanGoLeft()
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(mPacman_.getCoordinates());
+    COORDINATES rotation(mPacman_->getCoordinates());
     rotation.first--;
     if (checkRotation(rotation)) {
-        mPacman_.goLeft();
+        mPacman_->goLeft();
     }
 }
 
@@ -199,10 +185,10 @@ void Manager::PacmanGoLeft()
 void Manager::PacmanGoRight()
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(mPacman_.getCoordinates());
+    COORDINATES rotation(mPacman_->getCoordinates());
     rotation.first++;
     if (checkRotation(rotation)) {
-        mPacman_.goRight();
+        mPacman_->goRight();
     }
 }
 
@@ -210,10 +196,10 @@ void Manager::PacmanGoRight()
 void Manager::PacmanGoDown()
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(mPacman_.getCoordinates());
+    COORDINATES rotation(mPacman_->getCoordinates());
     rotation.second++;
     if (checkRotation(rotation)) {
-        mPacman_.goDown();
+        mPacman_->goDown();
     }
 }
 
@@ -221,10 +207,10 @@ void Manager::PacmanGoDown()
 void Manager::PacmanGoUp()
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(mPacman_.getCoordinates());
+    COORDINATES rotation(mPacman_->getCoordinates());
     rotation.second--;
     if (checkRotation(rotation)) {
-        mPacman_.goUp();
+        mPacman_->goUp();
     }
 }
 
@@ -232,13 +218,13 @@ void Manager::PacmanGoUp()
 void Manager::updatePacman()
 //------------------------------------------------------------------------------------------
 {
-    updatePacmanDirection();
-    wipeObject(mPacman_.getCoordinates());
-    if (mPacman_.move()) {
+    updateCharacterDirection(mPacman_);
+    wipeObject(mPacman_);
+    if (mPacman_->move()) {
         checkScore();
         checkTunnel();
     }
-    drawPacman();
+    drawCharacter(mPacman_);
 }
 
 //------------------------------------------------------------------------------------------
@@ -249,11 +235,19 @@ void Manager::updateGhosts()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::drawCharacter(std::shared_ptr<ICharacter> character)
+void Manager::drawCharacter(CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
     mField_.setChar(character->getCoordinates(), character->getPrintSymbol());
 }
+
+//------------------------------------------------------------------------------------------
+void Manager::updateCharacterDirection(CHARACTER character)
+//------------------------------------------------------------------------------------------
+{
+    character->setNextTile(mField_.getChar(character->getNextTileCoordinates()));
+}
+
 
 
 
