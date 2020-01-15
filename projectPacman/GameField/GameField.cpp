@@ -10,8 +10,6 @@ GameField::GameField()
 //------------------------------------------------------------------------------------------
 {
     initField();
-
-    //printTesting();
 }
 
 //------------------------------------------------------------------------------------------
@@ -76,11 +74,11 @@ void GameField::resetField()
 void GameField::printScore(const uint32_t score)
 //------------------------------------------------------------------------------------------
 {
-    const uint8_t size = 10;
+    const uint8_t size = SCORE_PRINT_SIZE;
         wchar_t scoreString[size] = {};
         swprintf_s(scoreString, L"%d", score);
         const uint8_t length = wcslen(scoreString);
-        const uint8_t shift_X = SCORE_FIELD_X_START + 10;
+        const uint8_t shift_X = SCORE_FIELD_X_START + SCORE_PRINT_SIZE;
         const uint8_t shift_Y = SCORE_FIELD_Y_START + SCORE_FIELD_Y_SIZE / 2;
 
         for (auto i = 0; i < length; ++i) {
@@ -93,11 +91,11 @@ void GameField::printScore(const uint32_t score)
 void GameField::printLives(const uint32_t score)
 //------------------------------------------------------------------------------------------
 {
-    const uint8_t size = 10;
+    const uint8_t size = SCORE_PRINT_SIZE;
         wchar_t scoreString[size] = {};
         swprintf_s(scoreString, L"%d", score);
         const uint8_t length = wcslen(scoreString);
-        const uint8_t shift_X = LIVES_FIELD_X_START + 10;
+        const uint8_t shift_X = LIVES_FIELD_X_START + SCORE_PRINT_SIZE;
         const uint8_t shift_Y = LIVES_FIELD_Y_START + LIVES_FIELD_Y_SIZE / 2;
 
         for (auto i = 0; i < length; ++i) {

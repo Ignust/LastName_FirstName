@@ -5,6 +5,7 @@ Pacman::Pacman()
     : mDescription_()
 //------------------------------------------------------------------------------------------
 {
+    mDescription_.mPrintSymbol_= PACMAN_SYMBOL;
     resetPosition();
 }
 
@@ -126,6 +127,14 @@ void Pacman::goTunnel(const E_TUNNEL tunnel)
         mDescription_.mCoordinates_.second = TUNNEL_1_Y;
     }
 }
+
+//------------------------------------------------------------------------------------------
+uint8_t Pacman::getPrintSymbol()
+//------------------------------------------------------------------------------------------
+{
+    return mDescription_.mPrintSymbol_;
+}
+
 
 
 

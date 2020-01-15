@@ -1,10 +1,14 @@
 #ifndef MANAGER_HPP
 #define MANAGER_HPP
 
+#include <memory>
+
 #include "projectPacman/GameField/GameField.hpp"
 #include "projectPacman/Keybord/Keybord.hpp"
 #include "projectPacman/Pacman/Pacman.hpp"
 #include "projectPacman/Tools/Types.hpp"
+#include "projectPacman/Ghost/Ghost.hpp"
+#include "projectPacman/ICharacter/ICharacter.hpp"
 
 class Manager {
     public:
@@ -30,6 +34,9 @@ class Manager {
         void PacmanGoRight();
         void PacmanGoDown();
         void PacmanGoUp();
+        void updatePacman();
+        void updateGhosts();
+        void drawCharacter(std::shared_ptr<ICharacter>);
 
         GameField mField_;
         Keybord mKeybord_;
@@ -39,6 +46,8 @@ class Manager {
         uint8_t mSmallPoints_;
         uint8_t mMazeLevel_;
         bool mGameOver_;
+        //Ghost mBlinky_;
+        std::shared_ptr<ICharacter> mBlinky_;
 };
 
 #endif // MANAGER_HPP

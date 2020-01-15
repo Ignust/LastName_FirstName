@@ -17,6 +17,7 @@
 #define BOUNDARY_SYMBOL     0x0023
 #define OBJECT_SYMBOL       0x260A
 #define PACMAN_SYMBOL       64
+#define GHOST_SYMBOL        66
 #define OBJECT_EMPTY        0x0020
 #define ENERGIZER_SYMBOL    'o'
 
@@ -204,6 +205,12 @@
 
 #define START_X_PACMAN 15
 #define START_Y_PACMAN 18
+#define START_X_GHOST 15
+#define START_Y_GHOST 19
+
+#define SCORE_PRINT_SIZE 10
+#define LIVES_PRINT_SIZE = 10
+
 
 //#define START_X_PACMAN      15
 //#define START_Y_PACMAN      GAME_FIELD_Y_START + GAME_FIELD_Y_SIZE/2

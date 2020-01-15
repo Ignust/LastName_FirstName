@@ -19,6 +19,7 @@ class ICharacter {
         virtual void setNextTile(uint8_t) = 0;
         virtual COORDINATES getNextTileCoordinates() = 0;
         virtual void goTunnel(const E_TUNNEL tunnel) = 0;
+        virtual uint8_t getPrintSymbol() = 0;
 
     private:
 

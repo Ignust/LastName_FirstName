@@ -12,7 +12,9 @@ Manager::Manager()
       mLives_(INIT_LIVES),
       mSmallPoints_(SMALLPOINT_AMOUNT),
       mMazeLevel_(INIT_MAZE_LEVEL),
-      mGameOver_(false)
+      mGameOver_(false),
+      mBlinky_(new Ghost(GHOST_SYMBOL))
+
 //------------------------------------------------------------------------------------------
 {
 
@@ -40,14 +42,8 @@ void Manager::update()
 {
     //std::this_thread::sleep_for(std::chrono::milliseconds(30));
     if (mSmallPoints_ > 0) {
-        updatePacmanDirection();
-        wipeObject(mPacman_.getCoordinates());
-        if (mPacman_.move()) {
-            checkScore();
-            checkTunnel();
-            //updatePacmanDirection();
-        }
-        drawPacman();
+        updatePacman();
+        updateGhosts();
     } else {
         nextLevel();
     }
@@ -231,4 +227,33 @@ void Manager::PacmanGoUp()
         mPacman_.goUp();
     }
 }
+
+//------------------------------------------------------------------------------------------
+void Manager::updatePacman()
+//------------------------------------------------------------------------------------------
+{
+    updatePacmanDirection();
+    wipeObject(mPacman_.getCoordinates());
+    if (mPacman_.move()) {
+        checkScore();
+        checkTunnel();
+    }
+    drawPacman();
+}
+
+//------------------------------------------------------------------------------------------
+void Manager::updateGhosts()
+//------------------------------------------------------------------------------------------
+{
+    drawCharacter(mBlinky_);
+}
+
+//------------------------------------------------------------------------------------------
+void Manager::drawCharacter(std::shared_ptr<ICharacter> character)
+//------------------------------------------------------------------------------------------
+{
+    mField_.setChar(character->getCoordinates(), character->getPrintSymbol());
+}
+
+
 

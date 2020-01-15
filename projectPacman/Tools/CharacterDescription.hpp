@@ -17,8 +17,7 @@ struct CharacterDescription {
     E_DIRECTION mDirection_;
     uint8_t nextTile_;
     std::pair<uint8_t,uint8_t> mCoordinates_;
-
-
+    uint8_t mPrintSymbol_;
 
 };
 
