@@ -164,9 +164,11 @@ void Manager::resetLevel()
 //------------------------------------------------------------------------------------------
 {
     wipeObject(mPacman_);
+    wipeObject(mBlinky_);
     mField_.resetField();
     mField_.showField();
     mPacman_->resetPosition();
+    mBlinky_->resetPosition();
     mSmallPoints_ = SMALLPOINT_AMOUNT;
 }
 
@@ -271,5 +273,6 @@ void Manager::decrementLives()
     if (!mLives_){
         mGameOver_ = true;
     }
+    resetLevel();
 }
 
