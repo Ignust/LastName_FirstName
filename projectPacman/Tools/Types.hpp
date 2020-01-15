@@ -9,6 +9,7 @@
 #define INIT_MAZE_LEVEL     1
 #define X_SIZE              29
 #define Y_SIZE              39
+#define INIT_SCORE          0
 
 #define BOTTOM_LINE_SIZE    3
 #define SMALLPOINT_AMOUNT   68//23

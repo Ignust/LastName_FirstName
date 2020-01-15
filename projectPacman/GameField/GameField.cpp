@@ -88,19 +88,19 @@ void GameField::printScore(const uint32_t score)
 }
 
 //------------------------------------------------------------------------------------------
-void GameField::printLives(const uint32_t score)
+void GameField::printLives(const uint32_t lives)
 //------------------------------------------------------------------------------------------
 {
     const uint8_t size = SCORE_PRINT_SIZE;
-        wchar_t scoreString[size] = {};
-        swprintf_s(scoreString, L"%d", score);
-        const uint8_t length = wcslen(scoreString);
+        wchar_t livesString[size] = {};
+        swprintf_s(livesString, L"%d", lives);
+        const uint8_t length = wcslen(livesString);
         const uint8_t shift_X = LIVES_FIELD_X_START + SCORE_PRINT_SIZE;
         const uint8_t shift_Y = LIVES_FIELD_Y_START + LIVES_FIELD_Y_SIZE / 2;
 
         for (auto i = 0; i < length; ++i) {
             COORDINATES coor(shift_X + i, shift_Y);
-            setChar(coor, scoreString[i]);
+            setChar(coor, livesString[i]);
         }
 }
 

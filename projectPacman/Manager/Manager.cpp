@@ -8,7 +8,7 @@ Manager::Manager()
     : mField_(),
       mKeybord_(),
       mPacman_(new Pacman),
-      mScore_(0),
+      mScore_(INIT_SCORE),
       mLives_(INIT_LIVES),
       mSmallPoints_(SMALLPOINT_AMOUNT),
       mMazeLevel_(INIT_MAZE_LEVEL),
@@ -73,6 +73,7 @@ void Manager::resetGame()
     resetLevel();
     mLives_ = INIT_LIVES;
     mMazeLevel_ = INIT_MAZE_LEVEL;
+    mScore_ = INIT_SCORE;
     mGameOver_ = false;
 }
 
