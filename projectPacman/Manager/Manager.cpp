@@ -91,43 +91,22 @@ void Manager::drawPacman()
 void Manager::processingPressedButton()
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(mPacman_.getCoordinates());
     switch (mKeybord_.getButtons()) {
     case A_Button:
     case Left_Button:
-        rotation.first--;
-        if (checkRotation(rotation)) {
-            mPacman_.goLeft();
-            //updatePacmanDirection();
-
-        }
+        PacmanGoLeft();
         break;
     case D_Button:
     case Right_Button:
-        rotation.first++;
-        if (checkRotation(rotation)) {
-            mPacman_.goRight();
-            //updatePacmanDirection();
-
-        }
+        PacmanGoRight();
         break;
     case S_Button:
     case Down_Button:
-        rotation.second++;
-        if (checkRotation(rotation)) {
-            mPacman_.goDown();
-            //updatePacmanDirection();
-
-        }
+        PacmanGoDown();
         break;
     case W_Button:
     case UP_Button:
-        rotation.second--;
-        if (checkRotation(rotation)) {
-            mPacman_.goUp();
-            //updatePacmanDirection();
-
-        }
+        PacmanGoUp();
         break;
     default:
         break;
@@ -179,13 +158,10 @@ void Manager::checkTunnel()
 }
 
 //------------------------------------------------------------------------------------------
-bool Manager::checkRotation(const COORDINATES rotation)
+bool Manager::checkRotation(const COORDINATES& rotation)
 //------------------------------------------------------------------------------------------
 {
-    if (mField_.getChar(rotation) != BOUNDARY_SYMBOL) {
-        return true;
-    }
-    return  false;
+    return mField_.getChar(rotation) != BOUNDARY_SYMBOL;
 }
 
 //------------------------------------------------------------------------------------------
@@ -211,3 +187,48 @@ void Manager::resetLevel()
     mPacman_.resetPosition();
     mSmallPoints_ = SMALLPOINT_AMOUNT;
 }
+
+//------------------------------------------------------------------------------------------
+void Manager::PacmanGoLeft()
+//------------------------------------------------------------------------------------------
+{
+    COORDINATES rotation(mPacman_.getCoordinates());
+    rotation.first--;
+    if (checkRotation(rotation)) {
+        mPacman_.goLeft();
+    }
+}
+
+//------------------------------------------------------------------------------------------
+void Manager::PacmanGoRight()
+//------------------------------------------------------------------------------------------
+{
+    COORDINATES rotation(mPacman_.getCoordinates());
+    rotation.first++;
+    if (checkRotation(rotation)) {
+        mPacman_.goRight();
+    }
+}
+
+//------------------------------------------------------------------------------------------
+void Manager::PacmanGoDown()
+//------------------------------------------------------------------------------------------
+{
+    COORDINATES rotation(mPacman_.getCoordinates());
+    rotation.second++;
+    if (checkRotation(rotation)) {
+        mPacman_.goDown();
+    }
+}
+
+//------------------------------------------------------------------------------------------
+void Manager::PacmanGoUp()
+//------------------------------------------------------------------------------------------
+{
+    COORDINATES rotation(mPacman_.getCoordinates());
+    rotation.second--;
+    if (checkRotation(rotation)) {
+        mPacman_.goUp();
+    }
+}
+

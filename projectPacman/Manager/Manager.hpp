@@ -23,9 +23,13 @@ class Manager {
         void updatePacmanDirection();
         void checkScore();
         void checkTunnel();
-        bool checkRotation(const COORDINATES rotation);
+        bool checkRotation(const COORDINATES&);
         void nextLevel();
         void resetLevel();
+        void PacmanGoLeft();
+        void PacmanGoRight();
+        void PacmanGoDown();
+        void PacmanGoUp();
 
         GameField mField_;
         Keybord mKeybord_;
