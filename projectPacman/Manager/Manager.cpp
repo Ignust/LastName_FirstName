@@ -249,7 +249,6 @@ void Manager::updateCharacterDirection(CHARACTER character)
     character->setNextTile(mField_.getChar(character->getNextTileCoordinates()));
 }
 
-
 //------------------------------------------------------------------------------------------
 void Manager::checkCollisionWithCharacters(CHARACTER character)
 //------------------------------------------------------------------------------------------
@@ -262,7 +261,6 @@ void Manager::checkCollisionWithCharacters(CHARACTER character)
 
     }
 }
-
 
 //------------------------------------------------------------------------------------------
 void Manager::decrementLives()
