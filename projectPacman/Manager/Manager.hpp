@@ -35,6 +35,8 @@ class Manager {
         void updateGhosts();
         void drawCharacter(CHARACTER);
         void updateCharacterDirection(CHARACTER);
+        void checkCollisionWithCharacters(CHARACTER);
+        void decrementLives();
 
         GameField mField_;
         Keybord mKeybord_;

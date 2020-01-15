@@ -221,6 +221,7 @@ void Manager::updatePacman()
     updateCharacterDirection(mPacman_);
     wipeObject(mPacman_);
     if (mPacman_->move()) {
+        checkCollisionWithCharacters(mPacman_);
         checkScore();
         checkTunnel();
     }
@@ -249,5 +250,28 @@ void Manager::updateCharacterDirection(CHARACTER character)
 }
 
 
+//------------------------------------------------------------------------------------------
+void Manager::checkCollisionWithCharacters(CHARACTER character)
+//------------------------------------------------------------------------------------------
+{
+    if (character->getPrintSymbol() == PACMAN_SYMBOL) {
+        if (mField_.getChar(character->getCoordinates()) == GHOST_SYMBOL) {
+            decrementLives();
+        }
+    } else {
 
+    }
+}
+
+
+//------------------------------------------------------------------------------------------
+void Manager::decrementLives()
+//------------------------------------------------------------------------------------------
+{
+    mLives_--;
+    mField_.printLives(mLives_);
+    if (!mLives_){
+        mGameOver_ = true;
+    }
+}
 
