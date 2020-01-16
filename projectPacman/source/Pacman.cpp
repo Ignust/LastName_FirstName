@@ -1,11 +1,11 @@
 #include "projectPacman/headers/Pacman.hpp"
 
 //------------------------------------------------------------------------------------------
-Pacman::Pacman()
+Pacman::Pacman(uint8_t printSymbol)
     : mDescription_()
 //------------------------------------------------------------------------------------------
 {
-    mDescription_.mPrintSymbol_= PACMAN_SYMBOL;
+    mDescription_.mPrintSymbol_= printSymbol;
     resetPosition();
 }
 

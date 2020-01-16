@@ -9,17 +9,17 @@ class Pacman: public ICharacter {
         Pacman();
         virtual ~Pacman();
 
-        virtual bool move();
-        virtual void resetPosition();
-        virtual COORDINATES getCoordinates()const;
-        virtual void goUp();
-        virtual void goLeft();
-        virtual void goDown();
-        virtual void goRight();
-        virtual void setNextTile(uint8_t);
-        virtual COORDINATES getNextTileCoordinates();
-        virtual void goTunnel(const E_TUNNEL tunnel);
-        virtual uint8_t getPrintSymbol()const;
+        bool move()override;
+        void resetPosition()override;
+        COORDINATES getCoordinates()const override;
+        void goUp()override;
+        void goLeft()override;
+        void goDown()override;
+        void goRight()override;
+        void setNextTile(uint8_t)override;
+        COORDINATES getNextTileCoordinates()override;
+        void goTunnel(const E_TUNNEL tunnel)override;
+        uint8_t getPrintSymbol()const override;
 
         private:
         CharacterDescription mDescription_;

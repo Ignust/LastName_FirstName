@@ -7,7 +7,7 @@
 Manager::Manager()
     : mField_(),
       mKeybord_(),
-      mPacman_(new Pacman),
+      mPacman_(new Pacman(PACMAN_SYMBOL)),
       mScore_(INIT_SCORE),
       mLives_(INIT_LIVES),
       mSmallPoints_(SMALLPOINT_AMOUNT),
