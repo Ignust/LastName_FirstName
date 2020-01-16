@@ -62,9 +62,7 @@ void PacmanMachine::showMenu()
 void PacmanMachine::startGame()
 //------------------------------------------------------------------------------------------
 {
-    //std::cout << __PRETTY_FUNCTION__ << std::endl;
     utils::Timer timer;
-
 
     mManager_.showField();
     system("pause");

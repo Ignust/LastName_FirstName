@@ -14,6 +14,8 @@ constexpr uint8_t INIT_SCORE()           {return 0;}
 constexpr uint8_t BOTTOM_LINE_SIZE()       {return 3;}
 constexpr uint8_t SMALLPOINT_AMOUNT()      {return 68;}//23
 constexpr uint8_t MAZE_LEVEL_AMOUNT()      {return 255;}
+constexpr uint8_t SMALLPOINT_SCORE()       {return 10;}
+constexpr uint8_t ENERGIZER_SCORE()        {return 50;}
 
 #define SMALLPOINT_SYMBOL   0x002E
 #define BOUNDARY_SYMBOL     0x0023
@@ -214,6 +216,16 @@ constexpr uint8_t TUNNEL_1_X() {return (GAME_FIELD_X_START() -1);}
 constexpr uint8_t TUNNEL_1_Y() {return (GAME_FIELD_Y_START() + GAME_FIELD_Y_SIZE() / 2 - BOUNDARY_SIZE() * 2);}
 constexpr uint8_t TUNNEL_2_X() {return (GAME_FIELD_X_START() + GAME_FIELD_X_SIZE() - BOUNDARY_SIZE() * 2);}
 constexpr uint8_t TUNNEL_2_Y() {return (GAME_FIELD_Y_START() + GAME_FIELD_Y_SIZE() / 2 - BOUNDARY_SIZE() * 2);}
+
+constexpr uint8_t ENERGIZER_1_X() {return (GAME_FIELD_X_START());}
+constexpr uint8_t ENERGIZER_1_Y() {return (GAME_FIELD_Y_START() + BOUNDARY_SIZE() * 2);}
+constexpr uint8_t ENERGIZER_2_X() {return (GAME_FIELD_X_START()+GAME_FIELD_X_SIZE() - BOUNDARY_SIZE() * 3);}
+constexpr uint8_t ENERGIZER_2_Y() {return (GAME_FIELD_Y_START() + BOUNDARY_SIZE() *2);}
+constexpr uint8_t ENERGIZER_3_X() {return (GAME_FIELD_X_START());}
+constexpr uint8_t ENERGIZER_3_Y() {return (GAME_FIELD_Y_START() +GAME_FIELD_Y_SIZE() - 9);}
+constexpr uint8_t ENERGIZER_4_X() {return (GAME_FIELD_X_START()+GAME_FIELD_X_SIZE() - BOUNDARY_SIZE() *3);}
+constexpr uint8_t ENERGIZER_4_Y() {return (GAME_FIELD_Y_START() +GAME_FIELD_Y_SIZE() - 9);}
+
 
 class ICharacter;
 typedef std::pair<uint8_t,uint8_t> COORDINATES;

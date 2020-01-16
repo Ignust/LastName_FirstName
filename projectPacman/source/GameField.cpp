@@ -158,6 +158,7 @@ void GameField::printScoreField()
 {
     printRectangleBoudary(SCORE_FIELD_X_START(), SCORE_FIELD_Y_START(),
                           SCORE_FIELD_X_FINISH(), SCORE_FIELD_Y_FINISH());
+
     printTitle(SCORE_FIELD_X_START() + 2, SCORE_FIELD_Y_START() + SCORE_FIELD_Y_SIZE() / 2,
                L">Score:");
 }
@@ -263,14 +264,10 @@ void GameField::printTunnel()
 void GameField::printEnergizers()
 //------------------------------------------------------------------------------------------
 {
-    setChar(GAME_FIELD_X_START(),
-            GAME_FIELD_Y_START() + BOUNDARY_SIZE() * 2, ENERGIZER_SYMBOL);
-    setChar(GAME_FIELD_X_START()+GAME_FIELD_X_SIZE() - BOUNDARY_SIZE() * 3,
-            GAME_FIELD_Y_START() + BOUNDARY_SIZE() *2, ENERGIZER_SYMBOL);
-    setChar(GAME_FIELD_X_START(),
-            GAME_FIELD_Y_START() +GAME_FIELD_Y_SIZE() - 9, ENERGIZER_SYMBOL);
-    setChar(GAME_FIELD_X_START()+GAME_FIELD_X_SIZE() - BOUNDARY_SIZE() *3,
-            GAME_FIELD_Y_START() +GAME_FIELD_Y_SIZE() - 9, ENERGIZER_SYMBOL);
+    setChar(ENERGIZER_1_X(), ENERGIZER_1_Y(), ENERGIZER_SYMBOL);
+    setChar(ENERGIZER_2_X(), ENERGIZER_2_Y(), ENERGIZER_SYMBOL);
+    setChar(ENERGIZER_3_X(), ENERGIZER_3_Y(), ENERGIZER_SYMBOL);
+    setChar(ENERGIZER_4_X(), ENERGIZER_4_Y(), ENERGIZER_SYMBOL);
 }
 
 //------------------------------------------------------------------------------------------
