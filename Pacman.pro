@@ -16,6 +16,7 @@ SOURCES += \
         projectPacman/source/PacmanMachine.cpp
 
 HEADERS += \
+    projectPacman/headers/FactoryCharacter.hpp \
     projectPacman/headers/GameField.hpp \
     projectPacman/headers/Ghost.hpp \
     projectPacman/headers/ICharacter.hpp \

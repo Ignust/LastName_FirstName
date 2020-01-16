@@ -23,8 +23,6 @@ class Manager {
 
     private:
 
-        typedef std::shared_ptr<ICharacter> CHARACTER;
-
         void processingPressedButton();
         void wipeObject(CHARACTER);
         void checkScore();

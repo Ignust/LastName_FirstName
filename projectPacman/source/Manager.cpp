@@ -2,18 +2,19 @@
 #include <istream>
 
 #include "projectPacman/headers/Manager.hpp"
+#include "projectPacman/headers/FactoryCharacter.hpp"
 
 //------------------------------------------------------------------------------------------
 Manager::Manager()
     : mField_(),
       mKeybord_(),
-      mPacman_(new Pacman(PACMAN_SYMBOL)),
+      mPacman_(FactoryCharacter::create(E_CHARACTER::PACMAN)),
       mScore_(INIT_SCORE()),
       mLives_(INIT_LIVES()),
       mSmallPoints_(SMALLPOINT_AMOUNT()),
       mMazeLevel_(INIT_MAZE_LEVEL()),
       mGameOver_(false),
-      mBlinky_(new Ghost(GHOST_SYMBOL))
+      mBlinky_(FactoryCharacter::create(E_CHARACTER::BLINKY))
 
 //------------------------------------------------------------------------------------------
 {
@@ -257,7 +258,7 @@ void Manager::checkCollisionWithCharacters(CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
     if (character->getPrintSymbol() == PACMAN_SYMBOL) {
-        if (mField_.getChar(character->getCoordinates()) == GHOST_SYMBOL) {
+        if (mField_.getChar(character->getCoordinates()) == BLINKY_SYMBOL) {
             decrementLives();
         }
     } else {

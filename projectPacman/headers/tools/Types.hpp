@@ -3,6 +3,7 @@
 
 #include <utility>
 #include <stdint.h>
+#include <memory>
 
 constexpr uint8_t INIT_LIVES()           {return 3;}
 constexpr uint8_t INIT_MAZE_LEVEL()      {return 1;}
@@ -18,7 +19,7 @@ constexpr uint8_t MAZE_LEVEL_AMOUNT()      {return 255;}
 #define BOUNDARY_SYMBOL     0x0023
 #define OBJECT_SYMBOL       0x260A
 #define PACMAN_SYMBOL       64
-#define GHOST_SYMBOL        66
+#define BLINKY_SYMBOL        66
 #define OBJECT_EMPTY        0x0020
 #define ENERGIZER_SYMBOL    'o'
 
@@ -214,8 +215,9 @@ constexpr uint8_t TUNNEL_1_Y() {return (GAME_FIELD_Y_START() + GAME_FIELD_Y_SIZE
 constexpr uint8_t TUNNEL_2_X() {return (GAME_FIELD_X_START() + GAME_FIELD_X_SIZE() - BOUNDARY_SIZE() * 2);}
 constexpr uint8_t TUNNEL_2_Y() {return (GAME_FIELD_Y_START() + GAME_FIELD_Y_SIZE() / 2 - BOUNDARY_SIZE() * 2);}
 
-
+class ICharacter;
 typedef std::pair<uint8_t,uint8_t> COORDINATES;
+typedef std::shared_ptr<ICharacter> CHARACTER;
 
 enum E_BUTTONS {
     A_Button =      97,
