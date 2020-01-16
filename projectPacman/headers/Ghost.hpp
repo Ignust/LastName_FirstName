@@ -1,8 +1,8 @@
 #ifndef GHOST_HPP
 #define GHOST_HPP
 
-#include "projectPacman/ICharacter/ICharacter.hpp"
-#include "projectPacman/Tools/CharacterDescription.hpp"
+#include "projectPacman/headers/ICharacter.hpp"
+#include "projectPacman/headers/tools/CharacterDescription.hpp"
 
 class Ghost: public ICharacter {
     public:

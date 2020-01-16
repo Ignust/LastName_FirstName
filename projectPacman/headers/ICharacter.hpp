@@ -1,7 +1,7 @@
 #ifndef ICHARACTER_HPP
 #define ICHARACTER_HPP
 
-#include <projectPacman/Tools/Types.hpp>
+#include "projectPacman/headers/tools/Types.hpp"
 
 
 class ICharacter {

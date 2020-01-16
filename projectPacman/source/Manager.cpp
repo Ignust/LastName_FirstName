@@ -1,7 +1,7 @@
 #include<thread>
 #include <istream>
 
-#include "Manager.hpp"
+#include "projectPacman/headers/Manager.hpp"
 
 //------------------------------------------------------------------------------------------
 Manager::Manager()

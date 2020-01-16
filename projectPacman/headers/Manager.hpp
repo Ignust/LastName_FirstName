@@ -1,12 +1,14 @@
 #ifndef MANAGER_HPP
 #define MANAGER_HPP
 
-#include "projectPacman/GameField/GameField.hpp"
-#include "projectPacman/Keybord/Keybord.hpp"
-#include "projectPacman/Pacman/Pacman.hpp"
-#include "projectPacman/Tools/Types.hpp"
-#include "projectPacman/Ghost/Ghost.hpp"
-#include "projectPacman/ICharacter/ICharacter.hpp"
+#include <memory>
+
+#include "projectPacman/headers/GameField.hpp"
+#include "projectPacman/headers/Keybord.hpp"
+#include "projectPacman/headers/Pacman.hpp"
+#include "projectPacman/headers/tools/Types.hpp"
+#include "projectPacman/headers/Ghost.hpp"
+#include "projectPacman/headers/ICharacter.hpp"
 
 class Manager {
     public:
@@ -20,6 +22,9 @@ class Manager {
         void resetGame();
 
     private:
+
+        typedef std::shared_ptr<ICharacter> CHARACTER;
+
         void processingPressedButton();
         void wipeObject(CHARACTER);
         void checkScore();

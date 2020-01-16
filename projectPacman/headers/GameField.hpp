@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "projectPacman/Tools/Types.hpp"
+#include "projectPacman/headers/tools/Types.hpp"
 
 class GameField {
     public:

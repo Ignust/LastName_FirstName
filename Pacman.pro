@@ -8,25 +8,21 @@ QMAKE_LFLAGS += -static-libstdc++
 
 SOURCES += \
         main.cpp \
-        projectPacman/Database/Database.cpp \
-        projectPacman/GameField/GameField.cpp \
-        projectPacman/Ghost/Ghost.cpp \
-        projectPacman/ICharacter/ICharacter.cpp \
-        projectPacman/Keybord/Keybord.cpp \
-        projectPacman/Manager/Manager.cpp \
-        projectPacman/Pacman/Pacman.cpp \
-        projectPacman/PacmanMachine/PacmanMachine.cpp \
-        projectPacman/Timer/Timer.cpp
+        projectPacman/source/GameField.cpp \
+        projectPacman/source/Ghost.cpp \
+        projectPacman/source/Keybord.cpp \
+        projectPacman/source/Manager.cpp \
+        projectPacman/source/Pacman.cpp \
+        projectPacman/source/PacmanMachine.cpp
 
 HEADERS += \
-    projectPacman/Database/Database.hpp \
-    projectPacman/GameField/GameField.hpp \
-    projectPacman/Ghost/Ghost.hpp \
-    projectPacman/ICharacter/ICharacter.hpp \
-    projectPacman/Keybord/Keybord.hpp \
-    projectPacman/Manager/Manager.hpp \
-    projectPacman/Pacman/Pacman.hpp \
-    projectPacman/PacmanMachine/PacmanMachine.hpp \
-    projectPacman/Timer/Timer.hpp \
-    projectPacman/Tools/CharacterDescription.hpp \
-    projectPacman/Tools/Types.hpp
+    projectPacman/headers/GameField.hpp \
+    projectPacman/headers/Ghost.hpp \
+    projectPacman/headers/ICharacter.hpp \
+    projectPacman/headers/Keybord.hpp \
+    projectPacman/headers/Manager.hpp \
+    projectPacman/headers/Pacman.hpp \
+    projectPacman/headers/PacmanMachine.hpp \
+    projectPacman/headers/Timer.hpp \
+    projectPacman/headers/tools/CharacterDescription.hpp \
+    projectPacman/headers/tools/Types.hpp

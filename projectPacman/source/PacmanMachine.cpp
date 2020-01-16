@@ -2,13 +2,12 @@
 #include <windows.h>
 #include <thread>
 
-#include "PacmanMachine.hpp"
-#include <projectPacman/Timer/Timer.hpp>
+#include "projectPacman/headers/PacmanMachine.hpp"
+#include "projectPacman/headers/Timer.hpp"
 
 //------------------------------------------------------------------------------------------
 PacmanMachine::PacmanMachine()
-    : mManager_(),
-      mDatabase_()
+    : mManager_()
 //------------------------------------------------------------------------------------------
 {
 

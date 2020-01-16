@@ -1,8 +1,7 @@
 #include <iostream>
 #include <windows.h>
 
-#include "GameField.hpp"
-
+#include "projectPacman/headers/GameField.hpp"
 
 //------------------------------------------------------------------------------------------
 GameField::GameField()

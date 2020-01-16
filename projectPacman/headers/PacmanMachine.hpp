@@ -1,8 +1,7 @@
 #ifndef PACMANMACHINE_HPP
 #define PACMANMACHINE_HPP
 
-#include "projectPacman/Manager/Manager.hpp"
-#include "projectPacman/Database/Database.hpp"
+#include "projectPacman/headers/Manager.hpp"
 
 class PacmanMachine {
     public:
@@ -19,7 +18,7 @@ class PacmanMachine {
         void QuitProgram();
 
         Manager mManager_;
-        Database mDatabase_;
+        //Database mDatabase_;
 
 };
 

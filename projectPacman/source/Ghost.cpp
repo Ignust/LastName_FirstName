@@ -1,4 +1,4 @@
-#include "Ghost.hpp"
+#include "projectPacman/headers/Ghost.hpp"
 
 //------------------------------------------------------------------------------------------
 Ghost::Ghost(uint8_t printSymbol)

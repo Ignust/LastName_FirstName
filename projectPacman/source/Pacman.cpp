@@ -1,4 +1,4 @@
-#include "Pacman.hpp"
+#include "projectPacman/headers/Pacman.hpp"
 
 //------------------------------------------------------------------------------------------
 Pacman::Pacman()

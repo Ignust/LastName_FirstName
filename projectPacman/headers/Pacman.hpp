@@ -1,8 +1,8 @@
 #ifndef PACMAN_HPP
 #define PACMAN_HPP
 
-#include "projectPacman/ICharacter/ICharacter.hpp"
-#include "projectPacman/Tools/CharacterDescription.hpp"
+#include "projectPacman/headers/ICharacter.hpp"
+#include "projectPacman/headers/tools/CharacterDescription.hpp"
 
 class Pacman: public ICharacter {
     public:

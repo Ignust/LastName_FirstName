@@ -3,7 +3,6 @@
 
 #include <utility>
 #include <stdint.h>
-#include <memory>
 
 #define INIT_LIVES          3
 #define INIT_MAZE_LEVEL     1
@@ -216,9 +215,8 @@
 
 //#define START_X_PACMAN      15
 //#define START_Y_PACMAN      GAME_FIELD_Y_START + GAME_FIELD_Y_SIZE/2
-class ICharacter;
+
 typedef std::pair<uint8_t,uint8_t> COORDINATES;
-typedef std::shared_ptr<ICharacter> CHARACTER;
 
 enum E_BUTTONS {
     A_Button =      97,

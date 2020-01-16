@@ -1,6 +1,6 @@
 #include <windows.h>
 
-#include <projectPacman/PacmanMachine/PacmanMachine.hpp>
+#include <projectPacman/headers/PacmanMachine.hpp>
 
 int main()
 {
