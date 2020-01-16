@@ -48,8 +48,8 @@ void Ghost::resetPosition()
 {
     mDescription_.mDirection_ = RIGHT;
     mDescription_.nextTile_ = OBJECT_EMPTY;
-    mDescription_.mCoordinates_.first = START_X_GHOST;
-    mDescription_.mCoordinates_.second = START_Y_GHOST;
+    mDescription_.mCoordinates_.first = START_X_GHOST();
+    mDescription_.mCoordinates_.second = START_Y_GHOST();
 }
 
 //------------------------------------------------------------------------------------------
@@ -119,12 +119,12 @@ void Ghost::goTunnel(const E_TUNNEL tunnel)
 //------------------------------------------------------------------------------------------
 {
     if (tunnel == TUNNEL_1) {
-        mDescription_.mCoordinates_.first = TUNNEL_2_X;
-        mDescription_.mCoordinates_.second = TUNNEL_2_Y;
+        mDescription_.mCoordinates_.first = TUNNEL_2_X();
+        mDescription_.mCoordinates_.second = TUNNEL_2_Y();
     }
     if (tunnel == TUNNEL_2) {
-        mDescription_.mCoordinates_.first = TUNNEL_1_X;
-        mDescription_.mCoordinates_.second = TUNNEL_1_Y;
+        mDescription_.mCoordinates_.first = TUNNEL_1_X();
+        mDescription_.mCoordinates_.second = TUNNEL_1_Y();
     }
 }
 

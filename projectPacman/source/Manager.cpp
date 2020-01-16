@@ -8,10 +8,10 @@ Manager::Manager()
     : mField_(),
       mKeybord_(),
       mPacman_(new Pacman(PACMAN_SYMBOL)),
-      mScore_(INIT_SCORE),
-      mLives_(INIT_LIVES),
-      mSmallPoints_(SMALLPOINT_AMOUNT),
-      mMazeLevel_(INIT_MAZE_LEVEL),
+      mScore_(INIT_SCORE()),
+      mLives_(INIT_LIVES()),
+      mSmallPoints_(SMALLPOINT_AMOUNT()),
+      mMazeLevel_(INIT_MAZE_LEVEL()),
       mGameOver_(false),
       mBlinky_(new Ghost(GHOST_SYMBOL))
 
@@ -71,9 +71,9 @@ void Manager::resetGame()
 //------------------------------------------------------------------------------------------
 {
     resetLevel();
-    mLives_ = INIT_LIVES;
-    mMazeLevel_ = INIT_MAZE_LEVEL;
-    mScore_ = INIT_SCORE;
+    mLives_ = INIT_LIVES();
+    mMazeLevel_ = INIT_MAZE_LEVEL();
+    mScore_ = INIT_SCORE();
     mGameOver_ = false;
 }
 
@@ -132,10 +132,10 @@ void Manager::checkTunnel()
 {
     uint8_t x = mPacman_->getCoordinates().first;
     uint8_t y = mPacman_->getCoordinates().second;
-    if (x == TUNNEL_1_X && y == TUNNEL_1_Y) {
+    if (x == TUNNEL_1_X() && y == TUNNEL_1_Y()) {
         mPacman_->goTunnel(TUNNEL_1);
     }
-    if (x == TUNNEL_2_X && y == TUNNEL_2_Y) {
+    if (x == TUNNEL_2_X() && y == TUNNEL_2_Y()) {
         mPacman_->goTunnel(TUNNEL_2);
     }
 }
@@ -152,7 +152,7 @@ void Manager::nextLevel()
 //------------------------------------------------------------------------------------------
 {
     mMazeLevel_++;
-    if (mMazeLevel_ > MAZE_LEVEL_AMOUNT){
+    if (mMazeLevel_ > MAZE_LEVEL_AMOUNT()){
         mGameOver_ = true;
         return;
     }
@@ -170,7 +170,7 @@ void Manager::resetLevel()
     mField_.showField();
     mPacman_->resetPosition();
     mBlinky_->resetPosition();
-    mSmallPoints_ = SMALLPOINT_AMOUNT;
+    mSmallPoints_ = SMALLPOINT_AMOUNT();
 }
 
 //------------------------------------------------------------------------------------------

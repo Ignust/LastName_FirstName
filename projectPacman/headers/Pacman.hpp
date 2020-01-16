@@ -6,7 +6,7 @@
 
 class Pacman: public ICharacter {
     public:
-        Pacman();
+        Pacman(uint8_t printSymbol);
         virtual ~Pacman();
 
         bool move()override;
