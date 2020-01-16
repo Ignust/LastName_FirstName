@@ -15,7 +15,6 @@ Manager::Manager()
       mMazeLevel_(INIT_MAZE_LEVEL()),
       mGameOver_(false),
       mBlinky_(FactoryCharacter::create(E_CHARACTER::BLINKY))
-
 //------------------------------------------------------------------------------------------
 {
 
@@ -105,10 +104,10 @@ void Manager::processingPressedButton()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::wipeObject(CHARACTER coord)
+void Manager::wipeObject(CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
-    mField_.setChar(coord->getCoordinates(),OBJECT_EMPTY);
+    mField_.setChar(character->getCoordinates(),character->getTileInMyPosition());
 }
 
 //------------------------------------------------------------------------------------------
@@ -236,6 +235,15 @@ void Manager::updatePacman()
 void Manager::updateGhosts()
 //------------------------------------------------------------------------------------------
 {
+
+    //drawCharacter(mBlinky_);
+
+    updateCharacterDirection(mBlinky_);
+    wipeObject(mBlinky_);
+    mBlinky_->goLeft();
+    if (mBlinky_->move()) {
+        checkCollisionWithCharacters(mBlinky_);
+    }
     drawCharacter(mBlinky_);
 }
 
@@ -243,6 +251,9 @@ void Manager::updateGhosts()
 void Manager::drawCharacter(CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
+    if (character->getPrintSymbol() != PACMAN_SYMBOL) {
+        character->setTileInMyPosition(mField_.getChar(character->getCoordinates()));
+    }
     mField_.setChar(character->getCoordinates(), character->getPrintSymbol());
 }
 

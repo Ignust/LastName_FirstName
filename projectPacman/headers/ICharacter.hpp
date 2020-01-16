@@ -20,6 +20,8 @@ class ICharacter {
         virtual COORDINATES getNextTileCoordinates() = 0;
         virtual void goTunnel(const E_TUNNEL tunnel) = 0;
         virtual uint8_t getPrintSymbol()const = 0;
+        virtual uint8_t getTileInMyPosition() = 0;
+        virtual void setTileInMyPosition(const uint8_t) = 0;
 
     private:
 

@@ -50,6 +50,7 @@ void Ghost::resetPosition()
     mDescription_.nextTile_ = OBJECT_EMPTY;
     mDescription_.mCoordinates_.first = START_X_GHOST();
     mDescription_.mCoordinates_.second = START_Y_GHOST();
+    mDescription_.tileInMyPosition = OBJECT_EMPTY;
 }
 
 //------------------------------------------------------------------------------------------
@@ -135,4 +136,17 @@ uint8_t Ghost::getPrintSymbol()const
     return mDescription_.mPrintSymbol_;
 }
 
+//------------------------------------------------------------------------------------------
+uint8_t Ghost::getTileInMyPosition()
+//------------------------------------------------------------------------------------------
+{
+    return mDescription_.tileInMyPosition;
+}
+
+//------------------------------------------------------------------------------------------
+void Ghost::setTileInMyPosition(const uint8_t tiele)
+//------------------------------------------------------------------------------------------
+{
+    mDescription_.tileInMyPosition = tiele;
+}
 

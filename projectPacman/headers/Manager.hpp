@@ -2,6 +2,7 @@
 #define MANAGER_HPP
 
 #include <memory>
+#include <vector>
 
 #include "projectPacman/headers/GameField.hpp"
 #include "projectPacman/headers/Keybord.hpp"
@@ -50,6 +51,7 @@ class Manager {
         uint8_t mMazeLevel_;
         bool mGameOver_;
         CHARACTER mBlinky_;
+        std::vector<CHARACTER> mVector;
 };
 
 #endif // MANAGER_HPP

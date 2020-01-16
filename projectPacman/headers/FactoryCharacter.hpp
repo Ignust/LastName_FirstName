@@ -34,4 +34,23 @@ class FactoryCharacter {
         }
 };
 
+class CharacterFactory {
+    public:
+        virtual CHARACTER create() = 0;
+};
+
+class PacmanFactory : public CharacterFactory {
+    public:
+         CHARACTER create(){
+            return  std::make_shared<Pacman>(PACMAN_SYMBOL);
+        }
+};
+
+class BlinkyFactory : public CharacterFactory {
+    public:
+        CHARACTER create(){
+            return  std::make_shared<Ghost>(BLINKY_SYMBOL);
+        }
+};
+
 #endif // FACTORY_CHARACTER_HPP

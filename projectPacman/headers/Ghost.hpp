@@ -20,6 +20,8 @@ class Ghost: public ICharacter {
          COORDINATES getNextTileCoordinates()override;
          void goTunnel(const E_TUNNEL tunnel)override;
          uint8_t getPrintSymbol()const override;
+         uint8_t getTileInMyPosition()override;
+         void setTileInMyPosition(const uint8_t)override;
 
         private:
         CharacterDescription mDescription_;
