@@ -8,6 +8,7 @@ QMAKE_LFLAGS += -static-libstdc++
 
 SOURCES += \
         main.cpp \
+        projectPacman/source/FactoryCharacter.cpp \
         projectPacman/source/GameField.cpp \
         projectPacman/source/Ghost.cpp \
         projectPacman/source/Keybord.cpp \
@@ -20,6 +21,7 @@ HEADERS += \
     projectPacman/headers/GameField.hpp \
     projectPacman/headers/Ghost.hpp \
     projectPacman/headers/ICharacter.hpp \
+    projectPacman/headers/IFactoryCharacter.hpp \
     projectPacman/headers/Keybord.hpp \
     projectPacman/headers/Manager.hpp \
     projectPacman/headers/Pacman.hpp \
