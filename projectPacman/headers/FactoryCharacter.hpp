@@ -4,7 +4,7 @@
 #include "projectPacman/headers/tools/Types.hpp"
 #include "projectPacman/headers/Pacman.hpp"
 #include "projectPacman/headers/Ghost.hpp"
-
+/*
 enum class E_CHARACTER: uint8_t {
     PACMAN,
     BLINKY,
@@ -33,24 +33,17 @@ class FactoryCharacter {
             return charect;
         }
 };
-
-class CharacterFactory {
+*/
+class ICharacterFactory {
     public:
-        virtual CHARACTER create() = 0;
+        virtual CHARACTER createPacman() = 0;
+        virtual CHARACTER createBlinky() = 0;
 };
 
-class PacmanFactory : public CharacterFactory {
+class CharacterFactory : public ICharacterFactory {
     public:
-         CHARACTER create(){
-            return  std::make_shared<Pacman>(PACMAN_SYMBOL);
-        }
-};
-
-class BlinkyFactory : public CharacterFactory {
-    public:
-        CHARACTER create(){
-            return  std::make_shared<Ghost>(BLINKY_SYMBOL);
-        }
+         CHARACTER createPacman()override{return  std::make_shared<Pacman>(PACMAN_SYMBOL());}
+         CHARACTER createBlinky()override{return  std::make_shared<Ghost>(BLINKY_SYMBOL());}
 };
 
 #endif // FACTORY_CHARACTER_HPP

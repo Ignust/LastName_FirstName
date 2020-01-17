@@ -20,7 +20,7 @@ Pacman::~Pacman()
 bool Pacman::move()
 //------------------------------------------------------------------------------------------
 {
-    if (mDescription_.nextTile_ != BOUNDARY_SYMBOL) {
+    if (mDescription_.nextTile_ != BOUNDARY_SYMBOL()) {
         switch (mDescription_.mDirection_) {
             case UP :
                 mDescription_.mCoordinates_.second--;
@@ -47,10 +47,10 @@ void Pacman::resetPosition()
 //------------------------------------------------------------------------------------------
 {
     mDescription_.mDirection_ = RIGHT;
-    mDescription_.nextTile_ = OBJECT_EMPTY;
+    mDescription_.nextTile_ = OBJECT_EMPTY();
     mDescription_.mCoordinates_.first = START_X_PACMAN();
     mDescription_.mCoordinates_.second = START_Y_PACMAN();
-    mDescription_.tileInMyPosition = OBJECT_EMPTY;
+    mDescription_.tileInMyPosition = OBJECT_EMPTY();
 }
 
 //------------------------------------------------------------------------------------------

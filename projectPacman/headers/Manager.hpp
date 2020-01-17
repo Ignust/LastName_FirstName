@@ -41,6 +41,7 @@ class Manager {
         void updateCharacterDirection(CHARACTER);
         void checkCollisionWithCharacters(CHARACTER);
         void decrementLives();
+        void changeGhostDirection();
 
         GameField mField_;
         Keybord mKeybord_;

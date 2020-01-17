@@ -17,13 +17,13 @@ constexpr uint8_t MAZE_LEVEL_AMOUNT()      {return 255;}
 constexpr uint8_t SMALLPOINT_SCORE()       {return 10;}
 constexpr uint8_t ENERGIZER_SCORE()        {return 50;}
 
-#define SMALLPOINT_SYMBOL   0x002E
-#define BOUNDARY_SYMBOL     0x0023
-#define OBJECT_SYMBOL       0x260A
-#define PACMAN_SYMBOL       64
-#define BLINKY_SYMBOL        66
-#define OBJECT_EMPTY        0x0020
-#define ENERGIZER_SYMBOL    'o'
+
+constexpr char SMALLPOINT_SYMBOL()        {return 0x2E;}
+constexpr char BOUNDARY_SYMBOL()        {return 0x23;}
+constexpr char PACMAN_SYMBOL()        {return 64;}
+constexpr char BLINKY_SYMBOL()        {return 66;}
+constexpr char OBJECT_EMPTY()        {return 0x20;}
+constexpr char ENERGIZER_SYMBOL()        {return 'o';}
 
 constexpr uint8_t BOUNDARY_SIZE()           {return 1;}
 

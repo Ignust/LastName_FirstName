@@ -8,16 +8,20 @@
 Manager::Manager()
     : mField_(),
       mKeybord_(),
-      mPacman_(FactoryCharacter::create(E_CHARACTER::PACMAN)),
+      //mPacman_(FactoryCharacter::create(E_CHARACTER::PACMAN)),
+      mPacman_(),
       mScore_(INIT_SCORE()),
       mLives_(INIT_LIVES()),
       mSmallPoints_(SMALLPOINT_AMOUNT()),
       mMazeLevel_(INIT_MAZE_LEVEL()),
       mGameOver_(false),
-      mBlinky_(FactoryCharacter::create(E_CHARACTER::BLINKY))
+      //mBlinky_(FactoryCharacter::create(E_CHARACTER::BLINKY))
+      mBlinky_()
 //------------------------------------------------------------------------------------------
 {
-
+    CharacterFactory factory;
+    mPacman_= factory.createPacman();
+    mBlinky_ = factory.createBlinky();
 }
 
 //------------------------------------------------------------------------------------------
@@ -114,13 +118,13 @@ void Manager::wipeObject(CHARACTER character)
 void Manager::checkScore()
 //------------------------------------------------------------------------------------------
 {
-    if (mField_.getChar(mPacman_->getCoordinates()) == SMALLPOINT_SYMBOL) {
+    if (mField_.getChar(mPacman_->getCoordinates()) == SMALLPOINT_SYMBOL()) {
         mScore_ += SMALLPOINT_SCORE();
         mField_.printScore(mScore_);
         mSmallPoints_--;
         //std::cout << static_cast<int>(mSmallPoints_) << " ";
     }
-    if (mField_.getChar(mPacman_->getNextTileCoordinates()) == ENERGIZER_SYMBOL) {
+    if (mField_.getChar(mPacman_->getNextTileCoordinates()) == ENERGIZER_SYMBOL()) {
         mScore_ += ENERGIZER_SCORE();
         mField_.printScore(mScore_);
     }
@@ -144,7 +148,7 @@ void Manager::checkTunnel()
 bool Manager::checkRotation(const COORDINATES& rotation)
 //------------------------------------------------------------------------------------------
 {
-    return mField_.getChar(rotation) != BOUNDARY_SYMBOL;
+    return mField_.getChar(rotation) != BOUNDARY_SYMBOL();
 }
 
 //------------------------------------------------------------------------------------------
@@ -240,9 +244,11 @@ void Manager::updateGhosts()
 
     updateCharacterDirection(mBlinky_);
     wipeObject(mBlinky_);
-    mBlinky_->goLeft();
+
     if (mBlinky_->move()) {
         checkCollisionWithCharacters(mBlinky_);
+    } else {
+        changeGhostDirection();
     }
     drawCharacter(mBlinky_);
 }
@@ -251,7 +257,7 @@ void Manager::updateGhosts()
 void Manager::drawCharacter(CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
-    if (character->getPrintSymbol() != PACMAN_SYMBOL) {
+    if (character->getPrintSymbol() != PACMAN_SYMBOL()) {
         character->setTileInMyPosition(mField_.getChar(character->getCoordinates()));
     }
     mField_.setChar(character->getCoordinates(), character->getPrintSymbol());
@@ -268,8 +274,8 @@ void Manager::updateCharacterDirection(CHARACTER character)
 void Manager::checkCollisionWithCharacters(CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
-    if (character->getPrintSymbol() == PACMAN_SYMBOL) {
-        if (mField_.getChar(character->getCoordinates()) == BLINKY_SYMBOL) {
+    if (character->getPrintSymbol() == PACMAN_SYMBOL()) {
+        if (mField_.getChar(character->getCoordinates()) == BLINKY_SYMBOL()) {
             decrementLives();
         }
     } else {
@@ -288,4 +294,12 @@ void Manager::decrementLives()
     }
     resetLevel();
 }
+
+//------------------------------------------------------------------------------------------
+void Manager::changeGhostDirection()
+//------------------------------------------------------------------------------------------
+{
+    mBlinky_->goLeft();
+}
+
 

@@ -73,17 +73,15 @@ void GameField::resetField()
 void GameField::printScore(const uint32_t score)
 //------------------------------------------------------------------------------------------
 {
-    const uint8_t size = SCORE_PRINT_SIZE();
-        wchar_t scoreString[size] = {};
-        swprintf_s(scoreString, L"%d", score);
-        const uint8_t length = wcslen(scoreString);
-        const uint8_t shift_X = SCORE_FIELD_X_START() + SCORE_PRINT_SIZE();
-        const uint8_t shift_Y = SCORE_FIELD_Y_START() + SCORE_FIELD_Y_SIZE() / 2;
-
-        for (auto i = 0; i < length; ++i) {
-            COORDINATES coor(shift_X + i, shift_Y);
-            setChar(coor, scoreString[i]);
-        }
+    const uint8_t size = SCORE_PRINT_SIZE() / 2;
+    char temp[size]={};
+    snprintf(temp,size,"%*d",size-1,score);
+    const uint8_t shift_X = SCORE_FIELD_X_START() + SCORE_PRINT_SIZE();
+    const uint8_t shift_Y = SCORE_FIELD_Y_START() + SCORE_FIELD_Y_SIZE() / 2;
+    for (auto i = 0; i < size; ++i) {
+        COORDINATES coor(shift_X + i, shift_Y);
+        setChar(coor, temp[i]);
+    }
 }
 
 //------------------------------------------------------------------------------------------
@@ -119,7 +117,7 @@ void GameField::initFieldSize()
 {
     mField_.resize(Y_SIZE());
     for (auto i = 0; i < Y_SIZE(); ++i) {
-        mField_[i].resize(X_SIZE(), OBJECT_EMPTY);
+        mField_[i].resize(X_SIZE(), OBJECT_EMPTY());
     }
 }
 
@@ -196,12 +194,12 @@ void GameField::printLine(const uint8_t x1, const uint8_t y1, const uint8_t x2, 
 {
     if (x1 == x2) {
             for (auto i = y1; i <= y2; ++i) {
-                setChar(x1, i, BOUNDARY_SYMBOL);
+                setChar(x1, i, BOUNDARY_SYMBOL());
             }
         }
         else if (y1 == y2) {
             for (auto i = x1; i <= x2; ++i) {
-                setChar(i, y1, BOUNDARY_SYMBOL);
+                setChar(i, y1, BOUNDARY_SYMBOL());
             }
         }
 }
@@ -226,7 +224,7 @@ void GameField::printTesting()
     uint8_t y = GAME_OBJECT_12_Y() + 2;
     for (uint8_t i = 0; i < 10; ++i) {
         for (uint8_t b = 0; b < 7; ++b) {
-            setChar(x + i, y + b, SMALLPOINT_SYMBOL);
+            setChar(x + i, y + b, SMALLPOINT_SYMBOL());
         }
     }
 }
@@ -247,7 +245,7 @@ void GameField::printRectangXY(const uint8_t x, const uint8_t y, const uint8_t s
 {
     for (uint8_t i = 0; i < sizeX; ++i) {
         for (uint8_t b = 0; b < sizeY; ++b) {
-            setChar(x + i, y + b, BOUNDARY_SYMBOL);
+            setChar(x + i, y + b, BOUNDARY_SYMBOL());
         }
     }
 }
@@ -256,18 +254,18 @@ void GameField::printRectangXY(const uint8_t x, const uint8_t y, const uint8_t s
 void GameField::printTunnel()
 //------------------------------------------------------------------------------------------
 {
-    setChar(TUNNEL_1_X(), TUNNEL_1_Y(), OBJECT_EMPTY);
-    setChar(TUNNEL_2_X(),TUNNEL_2_Y(), OBJECT_EMPTY);
+    setChar(TUNNEL_1_X(), TUNNEL_1_Y(), OBJECT_EMPTY());
+    setChar(TUNNEL_2_X(),TUNNEL_2_Y(), OBJECT_EMPTY());
 }
 
 //------------------------------------------------------------------------------------------
 void GameField::printEnergizers()
 //------------------------------------------------------------------------------------------
 {
-    setChar(ENERGIZER_1_X(), ENERGIZER_1_Y(), ENERGIZER_SYMBOL);
-    setChar(ENERGIZER_2_X(), ENERGIZER_2_Y(), ENERGIZER_SYMBOL);
-    setChar(ENERGIZER_3_X(), ENERGIZER_3_Y(), ENERGIZER_SYMBOL);
-    setChar(ENERGIZER_4_X(), ENERGIZER_4_Y(), ENERGIZER_SYMBOL);
+    setChar(ENERGIZER_1_X(), ENERGIZER_1_Y(), ENERGIZER_SYMBOL());
+    setChar(ENERGIZER_2_X(), ENERGIZER_2_Y(), ENERGIZER_SYMBOL());
+    setChar(ENERGIZER_3_X(), ENERGIZER_3_Y(), ENERGIZER_SYMBOL());
+    setChar(ENERGIZER_4_X(), ENERGIZER_4_Y(), ENERGIZER_SYMBOL());
 }
 
 //------------------------------------------------------------------------------------------
