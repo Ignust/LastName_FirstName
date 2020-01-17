@@ -6,7 +6,7 @@
 class CharacterFactory : public ICharacterFactory {
     public:
         virtual CHARACTER createPacman()override;
-        virtual CHARACTER createBlinky()override;
+        virtual GHOST createBlinky()override;
 };
 
 #endif // FACTORY_CHARACTER_HPP

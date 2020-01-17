@@ -15,7 +15,7 @@ class PacmanMachine {
         void startGame();
         void showStatistics();
         void addPlayerToDatatbase();
-        void QuitProgram();
+        void quitProgram();
 
         Manager mManager_;
         //Database mDatabase_;

@@ -88,19 +88,19 @@ void Manager::processingPressedButton()
     switch (mKeybord_.getButtons()) {
     case A_Button:
     case Left_Button:
-        CharacterGoLeft(mPacman_);
+        characterGoLeft(mPacman_);
         break;
     case D_Button:
     case Right_Button:
-        CharacterGoRight(mPacman_);
+        characterGoRight(mPacman_);
         break;
     case S_Button:
     case Down_Button:
-        CharacterGoDown(mPacman_);
+        characterGoDown(mPacman_);
         break;
     case W_Button:
     case UP_Button:
-        CharacterGoUp(mPacman_);
+        characterGoUp(mPacman_);
         break;
     default:
         break;
@@ -108,7 +108,7 @@ void Manager::processingPressedButton()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::wipeObject(CHARACTER character)
+void Manager::wipeObject(const CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
     mField_.setChar(character->getCoordinates(),character->getTileInMyPosition());
@@ -178,7 +178,7 @@ void Manager::resetLevel()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::CharacterGoLeft(CHARACTER character)
+void Manager::characterGoLeft(const CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
     COORDINATES rotation(character->getCoordinates());
@@ -189,7 +189,7 @@ void Manager::CharacterGoLeft(CHARACTER character)
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::CharacterGoRight(CHARACTER character)
+void Manager::characterGoRight(const CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
     COORDINATES rotation(character->getCoordinates());
@@ -200,7 +200,7 @@ void Manager::CharacterGoRight(CHARACTER character)
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::CharacterGoDown(CHARACTER character)
+void Manager::characterGoDown(const CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
     COORDINATES rotation(character->getCoordinates());
@@ -211,7 +211,7 @@ void Manager::CharacterGoDown(CHARACTER character)
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::CharacterGoUp(CHARACTER character)
+void Manager::characterGoUp(const CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
     COORDINATES rotation(character->getCoordinates());
@@ -249,7 +249,7 @@ void Manager::updateGhosts()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::drawCharacter(CHARACTER character)
+void Manager::drawCharacter(const CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
     if (character->getPrintSymbol() != PACMAN_SYMBOL()) {
@@ -259,14 +259,14 @@ void Manager::drawCharacter(CHARACTER character)
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::updateCharacterDirection(CHARACTER character)
+void Manager::updateCharacterDirection(const CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
     character->setNextTile(mField_.getChar(character->getNextTileCoordinates()));
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::checkCollisionWithCharacters(CHARACTER character)
+void Manager::checkCollisionWithCharacters(const CHARACTER character)
 //------------------------------------------------------------------------------------------
 {
     if (character->getPrintSymbol() == PACMAN_SYMBOL()) {

@@ -22,6 +22,7 @@ HEADERS += \
     projectPacman/headers/Ghost.hpp \
     projectPacman/headers/ICharacter.hpp \
     projectPacman/headers/IFactoryCharacter.hpp \
+    projectPacman/headers/IGhost.hpp \
     projectPacman/headers/Keybord.hpp \
     projectPacman/headers/Manager.hpp \
     projectPacman/headers/Pacman.hpp \

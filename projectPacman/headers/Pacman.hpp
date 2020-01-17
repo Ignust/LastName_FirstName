@@ -16,7 +16,7 @@ class Pacman: public ICharacter {
         virtual void goLeft()override;
         virtual void goDown()override;
         virtual void goRight()override;
-        virtual void setNextTile(uint8_t)override;
+        virtual void setNextTile(const uint8_t)override;
         virtual COORDINATES getNextTileCoordinates()override;
         virtual void goTunnel(const E_TUNNEL tunnel)override;
         virtual uint8_t getPrintSymbol()const override;

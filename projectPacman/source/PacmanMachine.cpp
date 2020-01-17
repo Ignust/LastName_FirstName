@@ -46,7 +46,7 @@ void PacmanMachine::showMenu()
             showStatistics();
             break;
         case 3 :
-            QuitProgram();
+            quitProgram();
             break;
         default:
             std::cout << "invalid option" << std::endl;
@@ -95,7 +95,7 @@ void PacmanMachine::addPlayerToDatatbase()
 }
 
 //------------------------------------------------------------------------------------------
-void PacmanMachine::QuitProgram()
+void PacmanMachine::quitProgram()
 //------------------------------------------------------------------------------------------
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;

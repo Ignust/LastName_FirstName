@@ -89,7 +89,7 @@ void Pacman::goRight()
 }
 
 //------------------------------------------------------------------------------------------
-void Pacman::setNextTile(uint8_t taile)
+void Pacman::setNextTile(const uint8_t taile)
 //------------------------------------------------------------------------------------------
 {
     mDescription_.nextTile_ = taile;

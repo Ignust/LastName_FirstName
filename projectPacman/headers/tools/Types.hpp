@@ -228,8 +228,11 @@ constexpr uint8_t ENERGIZER_4_Y() {return (GAME_FIELD_Y_START() +GAME_FIELD_Y_SI
 
 
 class ICharacter;
+class IGhost;
 typedef std::pair<uint8_t,uint8_t> COORDINATES;
 typedef std::shared_ptr<ICharacter> CHARACTER;
+typedef std::shared_ptr<IGhost> GHOST;
+
 
 enum E_BUTTONS {
     A_Button =      97,

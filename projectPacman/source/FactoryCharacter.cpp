@@ -8,7 +8,7 @@ CHARACTER CharacterFactory::createPacman()
 }
 
 //------------------------------------------------------------------------------------------
-CHARACTER CharacterFactory::createBlinky()
+GHOST CharacterFactory::createBlinky()
 //------------------------------------------------------------------------------------------
 {
     return std::make_shared<Ghost>(BLINKY_SYMBOL());

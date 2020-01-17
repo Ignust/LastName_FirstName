@@ -2,7 +2,6 @@
 #define MANAGER_HPP
 
 #include <memory>
-#include <vector>
 
 #include "projectPacman/headers/GameField.hpp"
 #include "projectPacman/headers/Keybord.hpp"
@@ -25,21 +24,21 @@ class Manager {
     private:
 
         void processingPressedButton();
-        void wipeObject(CHARACTER);
+        void wipeObject(const CHARACTER);
         void checkScore();
         void checkTunnel();
         bool checkRotation(const COORDINATES&);
         void nextLevel();
         void resetLevel();
-        void CharacterGoLeft(CHARACTER);
-        void CharacterGoRight(CHARACTER);
-        void CharacterGoDown(CHARACTER);
-        void CharacterGoUp(CHARACTER);
+        void characterGoLeft(const CHARACTER);
+        void characterGoRight(const CHARACTER);
+        void characterGoDown(const CHARACTER);
+        void characterGoUp(const CHARACTER);
         void updatePacman();
         void updateGhosts();
-        void drawCharacter(CHARACTER);
-        void updateCharacterDirection(CHARACTER);
-        void checkCollisionWithCharacters(CHARACTER);
+        void drawCharacter(const CHARACTER);
+        void updateCharacterDirection(const CHARACTER);
+        void checkCollisionWithCharacters(const CHARACTER);
         void decrementLives();
 
         GameField mField_;
@@ -50,8 +49,7 @@ class Manager {
         uint8_t mSmallPoints_;
         uint8_t mMazeLevel_;
         bool mGameOver_;
-        CHARACTER mBlinky_;
-        std::vector<CHARACTER> mVector;
+        GHOST mBlinky_;
 };
 
 #endif // MANAGER_HPP
