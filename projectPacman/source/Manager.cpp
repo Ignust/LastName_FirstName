@@ -241,16 +241,8 @@ void Manager::updateGhosts()
 {
     updateCharacterDirection(mBlinky_);
     wipeObject(mBlinky_);
-/*
-    if (mBlinky_->move()) {
-        checkCollisionWithCharacters(mBlinky_);
-    } else {
-        changeGhostDirection(mBlinky_);
-    }
-*/
     while (!mBlinky_->move()) {
         updateCharacterDirection(mBlinky_);
-
     }
     checkCollisionWithCharacters(mBlinky_);
     drawCharacter(mBlinky_);
