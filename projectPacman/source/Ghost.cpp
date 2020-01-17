@@ -1,3 +1,6 @@
+#include <ctime>
+#include <cstdlib>
+
 #include "projectPacman/headers/Ghost.hpp"
 
 //------------------------------------------------------------------------------------------
@@ -38,8 +41,11 @@ bool Ghost::move()
                 break;
         }
         return true;
-    } else
+    } else {
+        changeDirection();
         return false;
+    }
+
 }
 
 //------------------------------------------------------------------------------------------
@@ -148,5 +154,31 @@ void Ghost::setTileInMyPosition(const uint8_t tiele)
 //------------------------------------------------------------------------------------------
 {
     mDescription_.tileInMyPosition = tiele;
+}
+
+//------------------------------------------------------------------------------------------
+void Ghost::changeDirection()
+//------------------------------------------------------------------------------------------
+{
+    if (mDescription_.mDirection_ == UP || DOWN) {
+        switch (1 + rand()%3) {
+        case 1:
+            goLeft();
+            break;
+        case 2:
+            goRight();
+            break;
+        }
+    }
+        if (mDescription_.mDirection_ == LEFT || RIGHT) {
+            switch (1 + rand()%3) {
+            case 1:
+                goUp();
+                break;
+            case 2:
+                goDown();
+                break;
+            }
+        }
 }
 

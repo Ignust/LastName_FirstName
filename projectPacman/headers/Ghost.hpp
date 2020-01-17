@@ -24,8 +24,9 @@ class Ghost: public ICharacter {
          void setTileInMyPosition(const uint8_t)override;
 
         private:
-        CharacterDescription mDescription_;
+         void changeDirection();
 
+        CharacterDescription mDescription_;
 
 };
 

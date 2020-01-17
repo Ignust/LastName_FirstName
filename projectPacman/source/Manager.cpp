@@ -239,17 +239,20 @@ void Manager::updatePacman()
 void Manager::updateGhosts()
 //------------------------------------------------------------------------------------------
 {
-
-    //drawCharacter(mBlinky_);
-
     updateCharacterDirection(mBlinky_);
     wipeObject(mBlinky_);
-
+/*
     if (mBlinky_->move()) {
         checkCollisionWithCharacters(mBlinky_);
     } else {
-        changeGhostDirection();
+        changeGhostDirection(mBlinky_);
     }
+*/
+    while (!mBlinky_->move()) {
+        updateCharacterDirection(mBlinky_);
+
+    }
+    checkCollisionWithCharacters(mBlinky_);
     drawCharacter(mBlinky_);
 }
 
@@ -279,7 +282,10 @@ void Manager::checkCollisionWithCharacters(CHARACTER character)
             decrementLives();
         }
     } else {
-
+        if (mField_.getChar(character->getCoordinates()) == PACMAN_SYMBOL()) {
+            decrementLives();
+            character->setTileInMyPosition(OBJECT_EMPTY());
+        }
     }
 }
 
@@ -293,13 +299,6 @@ void Manager::decrementLives()
         mGameOver_ = true;
     }
     resetLevel();
-}
-
-//------------------------------------------------------------------------------------------
-void Manager::changeGhostDirection()
-//------------------------------------------------------------------------------------------
-{
-    mBlinky_->goLeft();
 }
 
 
