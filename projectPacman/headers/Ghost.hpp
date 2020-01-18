@@ -1,10 +1,10 @@
 #ifndef GHOST_HPP
 #define GHOST_HPP
 
-#include "projectPacman/headers/IGhost.hpp"
+#include "projectPacman/headers/ICharacter.hpp"
 #include "projectPacman/headers/tools/CharacterDescription.hpp"
 
-class Ghost: public IGhost {
+class Ghost: public ICharacter {
     public:
 
         Ghost(uint8_t printSymbol);

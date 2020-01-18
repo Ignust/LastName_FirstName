@@ -48,7 +48,7 @@ class Manager {
         uint8_t mSmallPoints_;
         uint8_t mMazeLevel_;
         bool mGameOver_;
-        GHOST mBlinky_;
+        CHARACTER mBlinky_;
 };
 
 #endif // MANAGER_HPP
