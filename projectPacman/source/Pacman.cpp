@@ -149,6 +149,20 @@ void Pacman::setTileInMyPosition(const uint8_t tiele)
 {
     mDescription_.tileInMyPosition = tiele;
 }
-;
+
+//------------------------------------------------------------------------------------------
+void Pacman::makeMove(const bool canGoUp, const bool canGoDown, const bool canGoLeft, const bool canGoRight)
+//------------------------------------------------------------------------------------------
+{
+    if (canGoUp && mDescription_.mDirection_ == UP) {
+        mDescription_.mCoordinates_.second--;
+    } else if (canGoDown && mDescription_.mDirection_ == DOWN) {
+        mDescription_.mCoordinates_.second++;
+    } else if (canGoLeft && mDescription_.mDirection_ == LEFT) {
+        mDescription_.mCoordinates_.first--;
+    } else if (canGoRight && mDescription_.mDirection_ == RIGHT) {
+        mDescription_.mCoordinates_.first++;
+    }
+}
 
 

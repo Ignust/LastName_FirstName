@@ -22,6 +22,7 @@ class ICharacter {
         virtual uint8_t getPrintSymbol()const = 0;
         virtual uint8_t getTileInMyPosition() = 0;
         virtual void setTileInMyPosition(const uint8_t) = 0;
+        virtual void makeMove(const bool, const bool, const bool, const bool) = 0;
 
     private:
 

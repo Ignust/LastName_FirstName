@@ -22,6 +22,7 @@ class Pacman: public ICharacter {
         virtual uint8_t getPrintSymbol()const override;
         virtual uint8_t getTileInMyPosition()override;
         virtual void setTileInMyPosition(const uint8_t)override;
+        virtual void makeMove(const bool canGoUp, const bool canGoDown, const bool canGoLeft, const bool canGoRight)override;
 
         private:
         CharacterDescription mDescription_;

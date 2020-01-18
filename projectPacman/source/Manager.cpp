@@ -225,6 +225,21 @@ void Manager::characterGoUp(const CHARACTER character)
 void Manager::updatePacman()
 //------------------------------------------------------------------------------------------
 {
+
+    COORDINATES PacmanCoor = mPacman_->getCoordinates();
+
+    bool canGoUp = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first,PacmanCoor.second - 1));
+    bool canGoDown = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first,PacmanCoor.second +1));
+    bool canGoLeft = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first - 1,PacmanCoor.second));
+    bool canGoRight = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first + 1,PacmanCoor.second));
+
+    wipeObject(mPacman_);
+    mPacman_->makeMove(canGoUp, canGoDown, canGoLeft, canGoRight);
+    checkCollisionWithCharacters(mPacman_);
+    checkScore();
+    checkTunnel();
+    drawCharacter(mPacman_);
+    /*
     updateCharacterDirection(mPacman_);
     wipeObject(mPacman_);
     if (mPacman_->move()) {
@@ -233,6 +248,7 @@ void Manager::updatePacman()
         checkTunnel();
     }
     drawCharacter(mPacman_);
+    */
 }
 
 //------------------------------------------------------------------------------------------
