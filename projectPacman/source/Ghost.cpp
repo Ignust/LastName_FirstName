@@ -156,6 +156,30 @@ void Ghost::setTileInMyPosition(const uint8_t tiele)
 }
 
 //------------------------------------------------------------------------------------------
+void Ghost::makeMove(const bool canGoUp, const bool canGoDown, const bool canGoLeft, const bool canGoRight)
+//------------------------------------------------------------------------------------------
+{
+    E_DIRECTION newDir;
+    switch (mDescription_.mDirection_) {
+        case UP :
+            newDir = getNewDirectionForUp(canGoUp,canGoLeft, canGoRight);
+            break;
+        case LEFT :
+            newDir = getNewDirectionForLeft(canGoUp,canGoDown, canGoLeft);
+            break;
+        case DOWN :
+            newDir = getNewDirectionForDown(canGoDown,canGoLeft, canGoRight);
+            break;
+        case RIGHT :
+            newDir = getNewDirectionForRight(canGoUp,canGoDown, canGoRight);
+            break;
+        default:
+            break;
+    }
+    changeCoordinateForDirection(newDir);
+}
+
+//------------------------------------------------------------------------------------------
 void Ghost::changeDirection()
 //------------------------------------------------------------------------------------------
 {
@@ -169,15 +193,133 @@ void Ghost::changeDirection()
             break;
         }
     }
-        if (mDescription_.mDirection_ == LEFT || RIGHT) {
-            switch (1 + rand()%3) {
-            case 1:
-                goUp();
-                break;
-            case 2:
-                goDown();
-                break;
-            }
+    if (mDescription_.mDirection_ == LEFT || RIGHT) {
+        switch (1 + rand()%3) {
+        case 1:
+            goUp();
+            break;
+        case 2:
+            goDown();
+            break;
         }
+    }
 }
+
+//------------------------------------------------------------------------------------------
+void Ghost::changeCoordinateForDirection(E_DIRECTION dir)
+//------------------------------------------------------------------------------------------
+{
+    mDescription_.mDirection_ = dir;
+    switch (mDescription_.mDirection_) {
+        case UP :
+            mDescription_.mCoordinates_.second--;
+            break;
+        case LEFT :
+            mDescription_.mCoordinates_.first--;
+            break;
+        case DOWN :
+            mDescription_.mCoordinates_.second++;
+            break;
+        case RIGHT :
+            mDescription_.mCoordinates_.first++;
+            break;
+        default:
+            break;
+    }
+}
+
+//------------------------------------------------------------------------------------------
+E_DIRECTION Ghost::getNewDirectionForUp(const bool canGoUp, const bool canGoLeft, const bool canGoRight)
+//------------------------------------------------------------------------------------------
+{
+    if (canGoUp) {
+        return UP;
+    }
+    else if (canGoLeft && canGoRight) {
+        return randomLeftRight();
+    }
+    else if (canGoLeft) {
+        return LEFT;
+    }
+    else if (canGoRight) {
+        return RIGHT;
+    }
+    return UP; //unreachable
+}
+
+//------------------------------------------------------------------------------------------
+E_DIRECTION Ghost::getNewDirectionForDown(const bool canGoDown, const bool canGoLeft, const bool canGoRight)
+//------------------------------------------------------------------------------------------
+{
+    if (canGoDown) {
+        return DOWN;
+    }
+    else if (canGoLeft && canGoRight) {
+        return randomLeftRight();
+    }
+    else if (canGoLeft) {
+        return LEFT;
+    }
+    else if (canGoRight) {
+        return RIGHT;
+    }
+    return UP; //unreachable
+}
+
+//------------------------------------------------------------------------------------------
+E_DIRECTION Ghost::getNewDirectionForLeft(const bool canGoUp, const bool canGoDown, const bool canGoLeft)
+//------------------------------------------------------------------------------------------
+{
+    if (canGoLeft) {
+        return LEFT;
+    }
+    else if (canGoUp && canGoDown) {
+        return randomUpDown();
+    }
+    else if (canGoUp) {
+        return UP;
+    }
+    else if (canGoDown) {
+        return DOWN;
+    }
+    return UP; //unreachable
+}
+
+//------------------------------------------------------------------------------------------
+E_DIRECTION Ghost::getNewDirectionForRight(const bool canGoUp, const bool canGoDown, const bool canGoRight)
+//------------------------------------------------------------------------------------------
+{
+    if (canGoRight) {
+        return RIGHT;
+    }
+    else if (canGoUp && canGoDown) {
+        return randomUpDown();
+    }
+    else if (canGoUp) {
+        return UP;
+    }
+    else if (canGoDown) {
+        return DOWN;
+    }
+    return UP; //unreachable
+}
+
+//------------------------------------------------------------------------------------------
+E_DIRECTION Ghost::randomLeftRight()
+//------------------------------------------------------------------------------------------
+{
+    srand(time(0));
+    return (0 == ( rand() % 2 )) ? LEFT : RIGHT;
+}
+
+//------------------------------------------------------------------------------------------
+E_DIRECTION Ghost::randomUpDown()
+//------------------------------------------------------------------------------------------
+{
+    srand(time(0));
+    return (0 == ( rand() % 2 )) ? UP : DOWN;
+}
+
+
+
 

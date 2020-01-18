@@ -23,10 +23,17 @@ class Ghost: public IGhost {
         virtual uint8_t getPrintSymbol()const override;
         virtual uint8_t getTileInMyPosition()override;
         virtual void setTileInMyPosition(const uint8_t)override;
-        virtual void toDo() override{};
+        virtual void makeMove(const bool canGoUp, const bool canGoDown, const bool canGoLeft, const bool canGoRight)override;
 
     private:
         void changeDirection();
+        void changeCoordinateForDirection(E_DIRECTION dir);
+        E_DIRECTION getNewDirectionForUp(const bool canGoUp, const bool canGoLeft, const bool canGoRight);
+        E_DIRECTION getNewDirectionForDown(const bool canGoDown, const bool canGoLeft, const bool canGoRight);
+        E_DIRECTION getNewDirectionForLeft(const bool canGoUp, const bool canGoDown, const bool canGoLeft);
+        E_DIRECTION getNewDirectionForRight(const bool canGoUp, const bool canGoDown, const bool canGoRight);
+        E_DIRECTION randomLeftRight();
+        E_DIRECTION randomUpDown();
 
         CharacterDescription mDescription_;
 

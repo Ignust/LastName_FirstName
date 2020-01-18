@@ -239,6 +239,18 @@ void Manager::updatePacman()
 void Manager::updateGhosts()
 //------------------------------------------------------------------------------------------
 {
+    COORDINATES BlinkyCoor = mBlinky_->getCoordinates();
+
+    bool canGoUp = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second - 1));
+    bool canGoDown = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second +1));
+    bool canGoLeft = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first - 1,BlinkyCoor.second));
+    bool canGoRight = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first + 1,BlinkyCoor.second));
+
+    wipeObject(mBlinky_);
+    mBlinky_->makeMove(canGoUp, canGoDown, canGoLeft, canGoRight);
+    checkCollisionWithCharacters(mBlinky_);
+    drawCharacter(mBlinky_);
+/*
     updateCharacterDirection(mBlinky_);
     wipeObject(mBlinky_);
     while (!mBlinky_->move()) {
@@ -246,6 +258,7 @@ void Manager::updateGhosts()
     }
     checkCollisionWithCharacters(mBlinky_);
     drawCharacter(mBlinky_);
+*/
 }
 
 //------------------------------------------------------------------------------------------

@@ -8,7 +8,7 @@ class IGhost: public ICharacter {
         IGhost(){}
         virtual ~IGhost(){}
 
-        virtual void toDo() = 0;
+        virtual void makeMove(const bool, const bool, const bool, const bool) = 0;
 
 };
 
