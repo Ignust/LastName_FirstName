@@ -37,7 +37,6 @@ class Manager {
         void updatePacman();
         void updateGhosts();
         void drawCharacter(const CHARACTER);
-        void updateCharacterDirection(const CHARACTER);
         void checkCollisionWithCharacters(const CHARACTER);
         void decrementLives();
 

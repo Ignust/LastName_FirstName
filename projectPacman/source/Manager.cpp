@@ -124,7 +124,7 @@ void Manager::checkScore()
         mSmallPoints_--;
         //std::cout << static_cast<int>(mSmallPoints_) << " ";
     }
-    if (mField_.getChar(mPacman_->getNextTileCoordinates()) == ENERGIZER_SYMBOL()) {
+    if (mField_.getChar(mPacman_->getCoordinates()) == ENERGIZER_SYMBOL()) {
         mScore_ += ENERGIZER_SCORE();
         mField_.printScore(mScore_);
     }
@@ -239,16 +239,6 @@ void Manager::updatePacman()
     checkScore();
     checkTunnel();
     drawCharacter(mPacman_);
-    /*
-    updateCharacterDirection(mPacman_);
-    wipeObject(mPacman_);
-    if (mPacman_->move()) {
-        checkCollisionWithCharacters(mPacman_);
-        checkScore();
-        checkTunnel();
-    }
-    drawCharacter(mPacman_);
-    */
 }
 
 //------------------------------------------------------------------------------------------
@@ -266,15 +256,6 @@ void Manager::updateGhosts()
     mBlinky_->makeMove(canGoUp, canGoDown, canGoLeft, canGoRight);
     checkCollisionWithCharacters(mBlinky_);
     drawCharacter(mBlinky_);
-/*
-    updateCharacterDirection(mBlinky_);
-    wipeObject(mBlinky_);
-    while (!mBlinky_->move()) {
-        updateCharacterDirection(mBlinky_);
-    }
-    checkCollisionWithCharacters(mBlinky_);
-    drawCharacter(mBlinky_);
-*/
 }
 
 //------------------------------------------------------------------------------------------
@@ -285,13 +266,6 @@ void Manager::drawCharacter(const CHARACTER character)
         character->setTileInMyPosition(mField_.getChar(character->getCoordinates()));
     }
     mField_.setChar(character->getCoordinates(), character->getPrintSymbol());
-}
-
-//------------------------------------------------------------------------------------------
-void Manager::updateCharacterDirection(const CHARACTER character)
-//------------------------------------------------------------------------------------------
-{
-    character->setNextTile(mField_.getChar(character->getNextTileCoordinates()));
 }
 
 //------------------------------------------------------------------------------------------

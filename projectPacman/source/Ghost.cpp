@@ -20,39 +20,10 @@ Ghost::~Ghost()
 }
 
 //------------------------------------------------------------------------------------------
-bool Ghost::move()
-//------------------------------------------------------------------------------------------
-{
-    if (mDescription_.nextTile_ != BOUNDARY_SYMBOL()) {
-        switch (mDescription_.mDirection_) {
-            case UP :
-                mDescription_.mCoordinates_.second--;
-                break;
-            case LEFT :
-                mDescription_.mCoordinates_.first--;
-                break;
-            case DOWN :
-                mDescription_.mCoordinates_.second++;
-                break;
-            case RIGHT :
-                mDescription_.mCoordinates_.first++;
-                break;
-            default:
-                break;
-        }
-        return true;
-    } else {
-        changeDirection();
-        return false;
-    }
-}
-
-//------------------------------------------------------------------------------------------
 void Ghost::resetPosition()
 //------------------------------------------------------------------------------------------
 {
     mDescription_.mDirection_ = RIGHT;
-    mDescription_.nextTile_ = OBJECT_EMPTY();
     mDescription_.mCoordinates_.first = START_X_GHOST();
     mDescription_.mCoordinates_.second = START_Y_GHOST();
     mDescription_.tileInMyPosition = OBJECT_EMPTY();
@@ -94,33 +65,6 @@ void Ghost::goRight()
 }
 
 //------------------------------------------------------------------------------------------
-void Ghost::setNextTile(const uint8_t taile)
-//------------------------------------------------------------------------------------------
-{
-    mDescription_.nextTile_ = taile;
-}
-
-//------------------------------------------------------------------------------------------
-COORDINATES Ghost::getNextTileCoordinates()
-//------------------------------------------------------------------------------------------
-{
-    COORDINATES nextTaile (mDescription_.mCoordinates_);
-    if (mDescription_.mDirection_ == LEFT) {
-        nextTaile.first--;
-    }
-    if (mDescription_.mDirection_ == RIGHT) {
-        nextTaile.first++;
-    }
-    if (mDescription_.mDirection_ == UP) {
-        nextTaile.second--;
-    }
-    if (mDescription_.mDirection_ == DOWN) {
-        nextTaile.second++;
-    }
-    return nextTaile;
-}
-
-//------------------------------------------------------------------------------------------
 void Ghost::goTunnel(const E_TUNNEL tunnel)
 //------------------------------------------------------------------------------------------
 {
@@ -159,7 +103,7 @@ void Ghost::setTileInMyPosition(const uint8_t tiele)
 void Ghost::makeMove(const bool canGoUp, const bool canGoDown, const bool canGoLeft, const bool canGoRight)
 //------------------------------------------------------------------------------------------
 {
-    E_DIRECTION newDir;
+    E_DIRECTION newDir = UP;
     switch (mDescription_.mDirection_) {
         case UP :
             newDir = getNewDirectionForUp(canGoUp,canGoLeft, canGoRight);
@@ -177,32 +121,6 @@ void Ghost::makeMove(const bool canGoUp, const bool canGoDown, const bool canGoL
             break;
     }
     changeCoordinateForDirection(newDir);
-}
-
-//------------------------------------------------------------------------------------------
-void Ghost::changeDirection()
-//------------------------------------------------------------------------------------------
-{
-    if (mDescription_.mDirection_ == UP || DOWN) {
-        switch (1 + rand()%3) {
-        case 1:
-            goLeft();
-            break;
-        case 2:
-            goRight();
-            break;
-        }
-    }
-    if (mDescription_.mDirection_ == LEFT || RIGHT) {
-        switch (1 + rand()%3) {
-        case 1:
-            goUp();
-            break;
-        case 2:
-            goDown();
-            break;
-        }
-    }
 }
 
 //------------------------------------------------------------------------------------------
