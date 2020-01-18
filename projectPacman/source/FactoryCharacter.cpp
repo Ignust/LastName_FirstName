@@ -3,14 +3,14 @@
 #include "projectPacman/headers/Ghost.hpp"
 
 //------------------------------------------------------------------------------------------
-CHARACTER CharacterFactory::createPacman()
+Character CharacterFactory::createPacman()
 //------------------------------------------------------------------------------------------
 {
     return  std::make_shared<Pacman>(PACMAN_SYMBOL());
 }
 
 //------------------------------------------------------------------------------------------
-CHARACTER CharacterFactory::createBlinky()
+Character CharacterFactory::createBlinky()
 //------------------------------------------------------------------------------------------
 {
     return std::make_shared<Ghost>(BLINKY_SYMBOL());

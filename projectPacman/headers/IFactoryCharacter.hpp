@@ -5,8 +5,8 @@
 
 class ICharacterFactory {
     public:
-        virtual CHARACTER createPacman() = 0;
-        virtual CHARACTER createBlinky() = 0;
+        virtual Character createPacman() = 0;
+        virtual Character createBlinky() = 0;
 };
 
 #endif // IFACTORY_CHARACTER_HPP

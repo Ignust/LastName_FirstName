@@ -5,6 +5,8 @@
 #include "projectPacman/headers/PacmanMachine.hpp"
 #include "projectPacman/headers/Timer.hpp"
 
+constexpr uint8_t SPEED(){return 240;}
+
 //------------------------------------------------------------------------------------------
 PacmanMachine::PacmanMachine()
     : mManager_()
@@ -66,7 +68,7 @@ void PacmanMachine::startGame()
 
     mManager_.showField();
     system("pause");
-    timer.start(std::chrono::milliseconds(240),[this](){ mManager_.update();});
+    timer.start(std::chrono::milliseconds(SPEED()),[this](){ mManager_.update();});
     while (!mManager_.gameOver()) {
         mManager_.checkUserAction();
         //mManager_.update();

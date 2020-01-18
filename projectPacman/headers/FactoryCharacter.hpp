@@ -5,8 +5,8 @@
 
 class CharacterFactory : public ICharacterFactory {
     public:
-        virtual CHARACTER createPacman()override;
-        virtual CHARACTER createBlinky()override;
+        virtual Character createPacman()override;
+        virtual Character createBlinky()override;
 };
 
 #endif // FACTORY_CHARACTER_HPP

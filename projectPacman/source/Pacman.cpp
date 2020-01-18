@@ -27,7 +27,7 @@ void Pacman::resetPosition()
 }
 
 //------------------------------------------------------------------------------------------
-COORDINATES Pacman::getCoordinates()const
+Coordinates Pacman::getCoordinates()const
 //------------------------------------------------------------------------------------------
 {
     return mDescription_.mCoordinates_;

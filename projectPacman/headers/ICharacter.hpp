@@ -10,7 +10,7 @@ class ICharacter {
         virtual ~ICharacter(){}
 
         virtual void resetPosition() = 0;
-        virtual COORDINATES getCoordinates()const = 0;
+        virtual Coordinates getCoordinates()const = 0;
         virtual void goUp() = 0;
         virtual void goLeft() = 0;
         virtual void goDown() = 0;

@@ -44,7 +44,6 @@ void Manager::checkUserAction()
 void Manager::update()
 //------------------------------------------------------------------------------------------
 {
-    //std::this_thread::sleep_for(std::chrono::milliseconds(30));
     if (mSmallPoints_ > 0) {
         updatePacman();
         updateGhosts();
@@ -108,7 +107,7 @@ void Manager::processingPressedButton()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::wipeObject(const CHARACTER character)
+void Manager::wipeObject(const Character& character)
 //------------------------------------------------------------------------------------------
 {
     mField_.setChar(character->getCoordinates(),character->getTileInMyPosition());
@@ -145,7 +144,7 @@ void Manager::checkTunnel()
 }
 
 //------------------------------------------------------------------------------------------
-bool Manager::checkRotation(const COORDINATES& rotation)
+bool Manager::checkRotation(const Coordinates& rotation)
 //------------------------------------------------------------------------------------------
 {
     return mField_.getChar(rotation) != BOUNDARY_SYMBOL();
@@ -178,10 +177,10 @@ void Manager::resetLevel()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::characterGoLeft(const CHARACTER character)
+void Manager::characterGoLeft(const Character& character)
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(character->getCoordinates());
+    Coordinates rotation(character->getCoordinates());
     rotation.first--;
     if (checkRotation(rotation)) {
         character->goLeft();
@@ -189,10 +188,10 @@ void Manager::characterGoLeft(const CHARACTER character)
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::characterGoRight(const CHARACTER character)
+void Manager::characterGoRight(const Character& character)
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(character->getCoordinates());
+    Coordinates rotation(character->getCoordinates());
     rotation.first++;
     if (checkRotation(rotation)) {
         character->goRight();
@@ -200,10 +199,10 @@ void Manager::characterGoRight(const CHARACTER character)
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::characterGoDown(const CHARACTER character)
+void Manager::characterGoDown(const Character& character)
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(character->getCoordinates());
+    Coordinates rotation(character->getCoordinates());
     rotation.second++;
     if (checkRotation(rotation)) {
         character->goDown();
@@ -211,10 +210,10 @@ void Manager::characterGoDown(const CHARACTER character)
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::characterGoUp(const CHARACTER character)
+void Manager::characterGoUp(const Character& character)
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES rotation(character->getCoordinates());
+    Coordinates rotation(character->getCoordinates());
     rotation.second--;
     if (checkRotation(rotation)) {
         character->goUp();
@@ -226,7 +225,7 @@ void Manager::updatePacman()
 //------------------------------------------------------------------------------------------
 {
 
-    COORDINATES PacmanCoor = mPacman_->getCoordinates();
+    Coordinates PacmanCoor = mPacman_->getCoordinates();
 
     bool canGoUp = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first,PacmanCoor.second - 1));
     bool canGoDown = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first,PacmanCoor.second +1));
@@ -245,7 +244,7 @@ void Manager::updatePacman()
 void Manager::updateGhosts()
 //------------------------------------------------------------------------------------------
 {
-    COORDINATES BlinkyCoor = mBlinky_->getCoordinates();
+    Coordinates BlinkyCoor = mBlinky_->getCoordinates();
 
     bool canGoUp = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second - 1));
     bool canGoDown = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second +1));
@@ -259,7 +258,7 @@ void Manager::updateGhosts()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::drawCharacter(const CHARACTER character)
+void Manager::drawCharacter(const Character& character)
 //------------------------------------------------------------------------------------------
 {
     if (character->getPrintSymbol() != PACMAN_SYMBOL()) {
@@ -269,7 +268,7 @@ void Manager::drawCharacter(const CHARACTER character)
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::checkCollisionWithCharacters(const CHARACTER character)
+void Manager::checkCollisionWithCharacters(const Character& character)
 //------------------------------------------------------------------------------------------
 {
     if (character->getPrintSymbol() == PACMAN_SYMBOL()) {
