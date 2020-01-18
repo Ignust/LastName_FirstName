@@ -16,12 +16,14 @@ Manager::Manager()
       mMazeLevel_(INIT_MAZE_LEVEL()),
       mGameOver_(false),
       //mBlinky_(FactoryCharacter::create(E_CHARACTER::BLINKY))
-      mBlinky_()
+      mBlinky_(),
+      mPinky_()
 //------------------------------------------------------------------------------------------
 {
     CharacterFactory factory;
     mPacman_= factory.createPacman();
     mBlinky_ = factory.createBlinky();
+    mPinky_ = factory.createPinky();
 }
 
 //------------------------------------------------------------------------------------------
@@ -244,17 +246,9 @@ void Manager::updatePacman()
 void Manager::updateGhosts()
 //------------------------------------------------------------------------------------------
 {
-    Coordinates BlinkyCoor = mBlinky_->getCoordinates();
+    updateBlinky();
+    //updatePinky();
 
-    bool canGoUp = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second - 1));
-    bool canGoDown = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second +1));
-    bool canGoLeft = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first - 1,BlinkyCoor.second));
-    bool canGoRight = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first + 1,BlinkyCoor.second));
-
-    wipeObject(mBlinky_);
-    mBlinky_->makeMove(canGoUp, canGoDown, canGoLeft, canGoRight);
-    checkCollisionWithCharacters(mBlinky_);
-    drawCharacter(mBlinky_);
 }
 
 //------------------------------------------------------------------------------------------
@@ -294,5 +288,41 @@ void Manager::decrementLives()
     }
     resetLevel();
 }
+
+//------------------------------------------------------------------------------------------
+void Manager::updateBlinky()
+//------------------------------------------------------------------------------------------
+{
+    Coordinates BlinkyCoor = mBlinky_->getCoordinates();
+
+    bool canGoUp = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second - 1));
+    bool canGoDown = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second +1));
+    bool canGoLeft = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first - 1,BlinkyCoor.second));
+    bool canGoRight = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first + 1,BlinkyCoor.second));
+
+    wipeObject(mBlinky_);
+    mBlinky_->makeMove(canGoUp, canGoDown, canGoLeft, canGoRight);
+    checkCollisionWithCharacters(mBlinky_);
+    drawCharacter(mBlinky_);
+}
+
+//------------------------------------------------------------------------------------------
+void Manager::updatePinky()
+//------------------------------------------------------------------------------------------
+{
+    Coordinates BlinkyCoor = mPinky_->getCoordinates();
+
+    bool canGoUp = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second - 1));
+    bool canGoDown = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second +1));
+    bool canGoLeft = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first - 1,BlinkyCoor.second));
+    bool canGoRight = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first + 1,BlinkyCoor.second));
+
+    wipeObject(mPinky_);
+    mPinky_->makeMove(canGoUp, canGoDown, canGoLeft, canGoRight);
+    checkCollisionWithCharacters(mPinky_);
+    drawCharacter(mPinky_);
+}
+
+
 
 

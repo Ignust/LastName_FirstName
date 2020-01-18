@@ -157,7 +157,7 @@ void GameField::printScoreField()
     printRectangleBoudary(SCORE_FIELD_X_START(), SCORE_FIELD_Y_START(),
                           SCORE_FIELD_X_FINISH(), SCORE_FIELD_Y_FINISH());
 
-    printTitle(SCORE_FIELD_X_START() + 2, SCORE_FIELD_Y_START() + SCORE_FIELD_Y_SIZE() / 2,
+    printTitle(SCORE_FIELD_X_START() + BOUNDARY_SIZE() * 2, SCORE_FIELD_Y_START() + SCORE_FIELD_Y_SIZE() / 2,
                L">Score:");
 }
 

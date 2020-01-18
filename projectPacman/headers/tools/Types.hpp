@@ -22,13 +22,16 @@ constexpr char SMALLPOINT_SYMBOL()        {return 0x2E;}
 constexpr char BOUNDARY_SYMBOL()        {return 0x23;}
 constexpr char PACMAN_SYMBOL()        {return 64;}
 constexpr char BLINKY_SYMBOL()        {return 66;}
+constexpr char PINKY_SYMBOL()        {return 'P';}//Pinky
+constexpr char INKY_SYMBOL()        {return 'I';}//Inky
+constexpr char CLYDE_SYMBOL()        {return 'C';}//Clyde
 constexpr char OBJECT_EMPTY()        {return 0x20;}
 constexpr char ENERGIZER_SYMBOL()        {return 'o';}
 
 constexpr uint8_t BOUNDARY_SIZE()           {return 1;}
 
-constexpr uint8_t START_X_PACMAN()           {return 15;}
-constexpr uint8_t START_Y_PACMAN()           {return 18;}
+constexpr uint8_t START_X_PACMAN()           {return 13;}
+constexpr uint8_t START_Y_PACMAN()           {return 27;}
 constexpr uint8_t START_X_GHOST()           {return 15;}
 constexpr uint8_t START_Y_GHOST()           {return 19;}
 
@@ -223,7 +226,7 @@ constexpr uint8_t ENERGIZER_2_X() {return (GAME_FIELD_X_START()+GAME_FIELD_X_SIZ
 constexpr uint8_t ENERGIZER_2_Y() {return (GAME_FIELD_Y_START() + BOUNDARY_SIZE() *2);}
 constexpr uint8_t ENERGIZER_3_X() {return (GAME_FIELD_X_START());}
 constexpr uint8_t ENERGIZER_3_Y() {return (GAME_FIELD_Y_START() +GAME_FIELD_Y_SIZE() - 9);}
-constexpr uint8_t ENERGIZER_4_X() {return (GAME_FIELD_X_START()+GAME_FIELD_X_SIZE() - BOUNDARY_SIZE() *3);}
+constexpr uint8_t ENERGIZER_4_X() {return (GAME_FIELD_X_START() + GAME_FIELD_X_SIZE() - BOUNDARY_SIZE() *3);}
 constexpr uint8_t ENERGIZER_4_Y() {return (GAME_FIELD_Y_START() +GAME_FIELD_Y_SIZE() - 9);}
 
 

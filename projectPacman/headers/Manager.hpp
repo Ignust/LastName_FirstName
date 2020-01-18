@@ -39,6 +39,8 @@ class Manager {
         void drawCharacter(const Character&);
         void checkCollisionWithCharacters(const Character&);
         void decrementLives();
+        void updateBlinky();
+        void updatePinky();
 
         GameField mField_;
         Keybord mKeybord_;
@@ -49,6 +51,7 @@ class Manager {
         uint8_t mMazeLevel_;
         bool mGameOver_;
         Character mBlinky_;
+        Character mPinky_;
 };
 
 #endif // MANAGER_HPP
