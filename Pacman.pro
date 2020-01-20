@@ -14,7 +14,8 @@ SOURCES += \
         projectPacman/source/Keybord.cpp \
         projectPacman/source/Manager.cpp \
         projectPacman/source/Pacman.cpp \
-        projectPacman/source/PacmanMachine.cpp
+        projectPacman/source/PacmanMachine.cpp \
+        projectPacman/source/Timer.cpp
 
 HEADERS += \
     projectPacman/headers/FactoryCharacter.hpp \
