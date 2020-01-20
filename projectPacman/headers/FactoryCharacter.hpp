@@ -5,11 +5,11 @@
 
 class CharacterFactory : public ICharacterFactory {
     public:
-        virtual Character createPacman()override;
-        virtual Character createBlinky()override;
-        virtual Character createPinky()override;
-        virtual Character createInky()override;
-        virtual Character createClyde()override;
+        virtual T_Character createPacman()override;
+        virtual T_Character createBlinky()override;
+        virtual T_Character createPinky()override;
+        virtual T_Character createInky()override;
+        virtual T_Character createClyde()override;
 };
 
 #endif // FACTORY_CHARACTER_HPP

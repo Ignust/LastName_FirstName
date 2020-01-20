@@ -10,7 +10,7 @@ class Pacman: public ICharacter {
         virtual ~Pacman();
 
         virtual void resetPosition()override;
-        virtual Coordinates getCoordinates()const override;
+        virtual const T_Coordinates& getCoordinates()const override;
         virtual void goUp()override;
         virtual void goLeft()override;
         virtual void goDown()override;

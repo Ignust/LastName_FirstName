@@ -11,7 +11,7 @@ class Ghost: public ICharacter {
         virtual ~Ghost();
 
         virtual void resetPosition()override;
-        virtual Coordinates getCoordinates()const override;
+        virtual const T_Coordinates& getCoordinates()const override;
         virtual void goUp()override;
         virtual void goLeft()override;
         virtual void goDown()override;

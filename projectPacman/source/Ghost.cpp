@@ -30,7 +30,7 @@ void Ghost::resetPosition()
 }
 
 //------------------------------------------------------------------------------------------
-Coordinates Ghost::getCoordinates()const
+const T_Coordinates& Ghost::getCoordinates()const
 //------------------------------------------------------------------------------------------
 {
     return mDescription_.mCoordinates_;

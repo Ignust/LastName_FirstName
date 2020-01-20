@@ -24,34 +24,34 @@ class Manager {
     private:
 
         void processingPressedButton();
-        void wipeObject(const Character&);
+        void wipeObject(const T_Character&);
         void checkScore();
         void checkTunnel();
-        bool checkRotation(const Coordinates&);
+        bool checkRotation(const T_Coordinates&);
         void nextLevel();
         void resetLevel();
-        void characterGoLeft(const Character&);
-        void characterGoRight(const Character&);
-        void characterGoDown(const Character&);
-        void characterGoUp(const Character&);
+        void characterGoLeft(const T_Character&);
+        void characterGoRight(const T_Character&);
+        void characterGoDown(const T_Character&);
+        void characterGoUp(const T_Character&);
         void updatePacman();
         void updateGhosts();
-        void drawCharacter(const Character&);
-        void checkCollisionWithCharacters(const Character&);
+        void drawCharacter(const T_Character&);
+        void checkCollisionWithCharacters(const T_Character&);
         void decrementLives();
         void updateBlinky();
         void updatePinky();
 
         GameField mField_;
         Keybord mKeybord_;
-        Character mPacman_;
+        T_Character mPacman_;
         uint32_t mScore_;
         uint32_t mLives_;
         uint8_t mSmallPoints_;
         uint8_t mMazeLevel_;
         bool mGameOver_;
-        Character mBlinky_;
-        Character mPinky_;
+        T_Character mBlinky_;
+        T_Character mPinky_;
 };
 
 #endif // MANAGER_HPP

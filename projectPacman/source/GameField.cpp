@@ -39,7 +39,7 @@ void GameField::setChar(const uint8_t x, const uint8_t y, const uint8_t c)
 }
 
 //------------------------------------------------------------------------------------------
-void GameField::setChar(const Coordinates coord,const uint8_t c)
+void GameField::setChar(const T_Coordinates coord,const uint8_t c)
 //------------------------------------------------------------------------------------------
 {
         mField_[coord.second][coord.first] = c;
@@ -54,7 +54,7 @@ const uint8_t& GameField::getChar(const uint8_t x, const uint8_t y)
 }
 
 //------------------------------------------------------------------------------------------
-const uint8_t& GameField::getChar(const Coordinates coord)
+const uint8_t& GameField::getChar(const T_Coordinates coord)
 //------------------------------------------------------------------------------------------
 {
     return mField_[coord.second][coord.first];
@@ -79,7 +79,7 @@ void GameField::printScore(const uint32_t score)
     const uint8_t shift_X = SCORE_FIELD_X_START() + SCORE_PRINT_SIZE();
     const uint8_t shift_Y = SCORE_FIELD_Y_START() + SCORE_FIELD_Y_SIZE() / 2;
     for (auto i = 0; i < size; ++i) {
-        Coordinates coor(shift_X + i, shift_Y);
+        T_Coordinates coor(shift_X + i, shift_Y);
         setChar(coor, temp[i]);
     }
 }
@@ -96,7 +96,7 @@ void GameField::printLives(const uint32_t lives)
         const uint8_t shift_Y = LIVES_FIELD_Y_START() + LIVES_FIELD_Y_SIZE() / 2;
 
         for (auto i = 0; i < length; ++i) {
-            Coordinates coor(shift_X + i, shift_Y);
+            T_Coordinates coor(shift_X + i, shift_Y);
             setChar(coor, livesString[i]);
         }
 }
@@ -204,7 +204,7 @@ void GameField::printLine(const uint8_t x1, const uint8_t y1, const uint8_t x2, 
         }
 }
 //------------------------------------------------------------------------------------------
-void GameField::updateChar(const Coordinates coord, const uint8_t c)
+void GameField::updateChar(const T_Coordinates coord, const uint8_t c)
 //------------------------------------------------------------------------------------------
 {
     TCHAR tempC = static_cast<TCHAR>(c);

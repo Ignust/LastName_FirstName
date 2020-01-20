@@ -107,7 +107,7 @@ void Manager::processingPressedButton()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::wipeObject(const Character& character)
+void Manager::wipeObject(const T_Character& character)
 //------------------------------------------------------------------------------------------
 {
     if(character != nullptr){
@@ -145,7 +145,7 @@ void Manager::checkTunnel()
 }
 
 //------------------------------------------------------------------------------------------
-bool Manager::checkRotation(const Coordinates& rotation)
+bool Manager::checkRotation(const T_Coordinates& rotation)
 //------------------------------------------------------------------------------------------
 {
     return mField_.getChar(rotation) != BOUNDARY_SYMBOL();
@@ -177,10 +177,10 @@ void Manager::resetLevel()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::characterGoLeft(const Character& character)
+void Manager::characterGoLeft(const T_Character& character)
 //------------------------------------------------------------------------------------------
 {
-    Coordinates rotation(character->getCoordinates());
+    T_Coordinates rotation(character->getCoordinates());
     rotation.first--;
     if (checkRotation(rotation)) {
         character->goLeft();
@@ -188,10 +188,10 @@ void Manager::characterGoLeft(const Character& character)
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::characterGoRight(const Character& character)
+void Manager::characterGoRight(const T_Character& character)
 //------------------------------------------------------------------------------------------
 {
-    Coordinates rotation(character->getCoordinates());
+    T_Coordinates rotation(character->getCoordinates());
     rotation.first++;
     if (checkRotation(rotation)) {
         character->goRight();
@@ -199,10 +199,10 @@ void Manager::characterGoRight(const Character& character)
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::characterGoDown(const Character& character)
+void Manager::characterGoDown(const T_Character& character)
 //------------------------------------------------------------------------------------------
 {
-    Coordinates rotation(character->getCoordinates());
+    T_Coordinates rotation(character->getCoordinates());
     rotation.second++;
     if (checkRotation(rotation)) {
         character->goDown();
@@ -210,10 +210,10 @@ void Manager::characterGoDown(const Character& character)
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::characterGoUp(const Character& character)
+void Manager::characterGoUp(const T_Character& character)
 //------------------------------------------------------------------------------------------
 {
-    Coordinates rotation(character->getCoordinates());
+    T_Coordinates rotation(character->getCoordinates());
     rotation.second--;
     if (checkRotation(rotation)) {
         character->goUp();
@@ -225,12 +225,12 @@ void Manager::updatePacman()
 //------------------------------------------------------------------------------------------
 {
 
-    Coordinates PacmanCoor = mPacman_->getCoordinates();
+    T_Coordinates PacmanCoor = mPacman_->getCoordinates();
 
-    bool canGoUp = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first,PacmanCoor.second - 1));
-    bool canGoDown = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first,PacmanCoor.second +1));
-    bool canGoLeft = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first - 1,PacmanCoor.second));
-    bool canGoRight = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first + 1,PacmanCoor.second));
+    const bool canGoUp = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first,PacmanCoor.second - 1));
+    const bool canGoDown = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first,PacmanCoor.second +1));
+    const bool canGoLeft = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first - 1,PacmanCoor.second));
+    const bool canGoRight = (BOUNDARY_SYMBOL() != mField_.getChar(PacmanCoor.first + 1,PacmanCoor.second));
 
     wipeObject(mPacman_);
     mPacman_->makeMove(canGoUp, canGoDown, canGoLeft, canGoRight);
@@ -250,7 +250,7 @@ void Manager::updateGhosts()
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::drawCharacter(const Character& character)
+void Manager::drawCharacter(const T_Character& character)
 //------------------------------------------------------------------------------------------
 {
     if (character->getPrintSymbol() != PACMAN_SYMBOL()) {
@@ -260,7 +260,7 @@ void Manager::drawCharacter(const Character& character)
 }
 
 //------------------------------------------------------------------------------------------
-void Manager::checkCollisionWithCharacters(const Character& character)
+void Manager::checkCollisionWithCharacters(const T_Character& character)
 //------------------------------------------------------------------------------------------
 {
     if (character->getPrintSymbol() == PACMAN_SYMBOL()) {
@@ -291,12 +291,12 @@ void Manager::decrementLives()
 void Manager::updateBlinky()
 //------------------------------------------------------------------------------------------
 {
-    Coordinates BlinkyCoor = mBlinky_->getCoordinates();
+    T_Coordinates BlinkyCoor = mBlinky_->getCoordinates();
 
-    bool canGoUp = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second - 1));
-    bool canGoDown = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second +1));
-    bool canGoLeft = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first - 1,BlinkyCoor.second));
-    bool canGoRight = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first + 1,BlinkyCoor.second));
+    const bool canGoUp = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second - 1));
+    const bool canGoDown = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second +1));
+    const bool canGoLeft = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first - 1,BlinkyCoor.second));
+    const bool canGoRight = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first + 1,BlinkyCoor.second));
 
     wipeObject(mBlinky_);
     mBlinky_->makeMove(canGoUp, canGoDown, canGoLeft, canGoRight);
@@ -308,7 +308,7 @@ void Manager::updateBlinky()
 void Manager::updatePinky()
 //------------------------------------------------------------------------------------------
 {
-    Coordinates BlinkyCoor = mPinky_->getCoordinates();
+    T_Coordinates BlinkyCoor = mPinky_->getCoordinates();
 
     bool canGoUp = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second - 1));
     bool canGoDown = (BOUNDARY_SYMBOL() != mField_.getChar(BlinkyCoor.first,BlinkyCoor.second +1));
