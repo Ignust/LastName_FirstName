@@ -8,14 +8,12 @@
 Manager::Manager()
     : mField_(),
       mKeybord_(),
-      //mPacman_(FactoryCharacter::create(E_CHARACTER::PACMAN)),
       mPacman_(),
       mScore_(INIT_SCORE()),
       mLives_(INIT_LIVES()),
       mSmallPoints_(SMALLPOINT_AMOUNT()),
       mMazeLevel_(INIT_MAZE_LEVEL()),
       mGameOver_(false),
-      //mBlinky_(FactoryCharacter::create(E_CHARACTER::BLINKY))
       mBlinky_(),
       mPinky_()
 //------------------------------------------------------------------------------------------
@@ -78,7 +76,7 @@ void Manager::resetGame()
     resetLevel();
     mLives_ = INIT_LIVES();
     mMazeLevel_ = INIT_MAZE_LEVEL();
-    mScore_ = {INIT_SCORE()};//INIT_SCORE();
+    mScore_ = {INIT_SCORE()};
     mGameOver_ = false;
 }
 
@@ -112,7 +110,9 @@ void Manager::processingPressedButton()
 void Manager::wipeObject(const Character& character)
 //------------------------------------------------------------------------------------------
 {
-    mField_.setChar(character->getCoordinates(),character->getTileInMyPosition());
+    if(character != nullptr){
+        mField_.setChar(character->getCoordinates(),character->getTileInMyPosition());
+    }
 }
 
 //------------------------------------------------------------------------------------------
@@ -123,7 +123,6 @@ void Manager::checkScore()
         mScore_ += SMALLPOINT_SCORE();
         mField_.printScore(mScore_);
         mSmallPoints_--;
-        //std::cout << static_cast<int>(mSmallPoints_) << " ";
     }
     if (mField_.getChar(mPacman_->getCoordinates()) == ENERGIZER_SYMBOL()) {
         mScore_ += ENERGIZER_SCORE();
@@ -159,7 +158,6 @@ void Manager::nextLevel()
     mMazeLevel_++;
     if (mMazeLevel_ > MAZE_LEVEL_AMOUNT()){
         mGameOver_ = true;
-        return;
     }
 
     resetLevel();

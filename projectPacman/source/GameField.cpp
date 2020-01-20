@@ -47,14 +47,14 @@ void GameField::setChar(const Coordinates coord,const uint8_t c)
 }
 
 //------------------------------------------------------------------------------------------
-uint8_t GameField::getChar(const uint8_t x, const uint8_t y)
+const uint8_t& GameField::getChar(const uint8_t x, const uint8_t y)
 //------------------------------------------------------------------------------------------
 {
     return mField_[y][x];
 }
 
 //------------------------------------------------------------------------------------------
-uint8_t GameField::getChar(const Coordinates coord)
+const uint8_t& GameField::getChar(const Coordinates coord)
 //------------------------------------------------------------------------------------------
 {
     return mField_[coord.second][coord.first];

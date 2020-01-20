@@ -13,8 +13,8 @@ class GameField {
         void showField();
         void setChar(const uint8_t x, const uint8_t y, const uint8_t c);
         void setChar(const Coordinates,  const uint8_t c);
-        uint8_t getChar(const uint8_t x, const uint8_t y);
-        uint8_t getChar(const Coordinates);
+        const uint8_t& getChar(const uint8_t x, const uint8_t y);
+        const uint8_t& getChar(const Coordinates);
         void resetField();
         void printScore(const uint32_t);
         void printLives(const uint32_t);

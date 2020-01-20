@@ -76,14 +76,14 @@ void Pacman::goTunnel(const E_TUNNEL tunnel)
 }
 
 //------------------------------------------------------------------------------------------
-uint8_t Pacman::getPrintSymbol()const
+const uint8_t& Pacman::getPrintSymbol()const
 //------------------------------------------------------------------------------------------
 {
     return mDescription_.mPrintSymbol_;
 }
 
 //------------------------------------------------------------------------------------------
-uint8_t Pacman::getTileInMyPosition()
+const uint8_t& Pacman::getTileInMyPosition()
 //------------------------------------------------------------------------------------------
 {
     return mDescription_.tileInMyPosition;

@@ -27,5 +27,5 @@ bool Keybord::checkButtons()
 uint32_t Keybord::getButtons()
 //------------------------------------------------------------------------------------------
 {
-    return _getch();
+    return getch();
 }

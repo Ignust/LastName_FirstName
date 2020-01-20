@@ -16,8 +16,8 @@ class Pacman: public ICharacter {
         virtual void goDown()override;
         virtual void goRight()override;
         virtual void goTunnel(const E_TUNNEL tunnel)override;
-        virtual uint8_t getPrintSymbol()const override;
-        virtual uint8_t getTileInMyPosition()override;
+        virtual const uint8_t& getPrintSymbol()const override;
+        virtual const uint8_t& getTileInMyPosition()override;
         virtual void setTileInMyPosition(const uint8_t)override;
         virtual void makeMove(const bool canGoUp, const bool canGoDown, const bool canGoLeft, const bool canGoRight)override;
 

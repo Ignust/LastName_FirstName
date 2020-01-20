@@ -79,14 +79,14 @@ void Ghost::goTunnel(const E_TUNNEL tunnel)
 }
 
 //------------------------------------------------------------------------------------------
-uint8_t Ghost::getPrintSymbol()const
+const uint8_t& Ghost::getPrintSymbol()const
 //------------------------------------------------------------------------------------------
 {
     return mDescription_.mPrintSymbol_;
 }
 
 //------------------------------------------------------------------------------------------
-uint8_t Ghost::getTileInMyPosition()
+const uint8_t& Ghost::getTileInMyPosition()
 //------------------------------------------------------------------------------------------
 {
     return mDescription_.tileInMyPosition;
