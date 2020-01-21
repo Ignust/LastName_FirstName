@@ -100,7 +100,7 @@ void Ghost::setTileInMyPosition(const uint8_t tiele)
 }
 
 //------------------------------------------------------------------------------------------
-void Ghost::makeMove(const bool canGoUp, const bool canGoDown, const bool canGoLeft, const bool canGoRight)
+void Ghost::makeMove(const bool& canGoUp, const bool& canGoDown, const bool& canGoLeft, const bool& canGoRight)
 //------------------------------------------------------------------------------------------
 {
     E_DIRECTION newDir = UP;

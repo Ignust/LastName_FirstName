@@ -32,14 +32,14 @@ void GameField::showField()
 }
 
 //------------------------------------------------------------------------------------------
-void GameField::setChar(const uint8_t x, const uint8_t y, const uint8_t c)
+void GameField::setChar(const uint8_t& x, const uint8_t& y, const uint8_t& c)
 //------------------------------------------------------------------------------------------
 {
     mField_[y][x] = c;
 }
 
 //------------------------------------------------------------------------------------------
-void GameField::setChar(const T_Coordinates coord,const uint8_t c)
+void GameField::setChar(const T_Coordinates& coord,const uint8_t& c)
 //------------------------------------------------------------------------------------------
 {
         mField_[coord.second][coord.first] = c;
@@ -47,14 +47,14 @@ void GameField::setChar(const T_Coordinates coord,const uint8_t c)
 }
 
 //------------------------------------------------------------------------------------------
-const uint8_t& GameField::getChar(const uint8_t x, const uint8_t y)
+const uint8_t& GameField::getChar(const uint8_t& x, const uint8_t& y)
 //------------------------------------------------------------------------------------------
 {
     return mField_[y][x];
 }
 
 //------------------------------------------------------------------------------------------
-const uint8_t& GameField::getChar(const T_Coordinates coord)
+const uint8_t& GameField::getChar(const T_Coordinates& coord)
 //------------------------------------------------------------------------------------------
 {
     return mField_[coord.second][coord.first];
@@ -70,7 +70,7 @@ void GameField::resetField()
 }
 
 //------------------------------------------------------------------------------------------
-void GameField::printScore(const uint32_t score)
+void GameField::printScore(const uint32_t& score)
 //------------------------------------------------------------------------------------------
 {
     const uint8_t size = SCORE_PRINT_SIZE() / 2;
@@ -85,7 +85,7 @@ void GameField::printScore(const uint32_t score)
 }
 
 //------------------------------------------------------------------------------------------
-void GameField::printLives(const uint32_t lives)
+void GameField::printLives(const uint32_t& lives)
 //------------------------------------------------------------------------------------------
 {
     const uint8_t size = SCORE_PRINT_SIZE();
@@ -162,7 +162,7 @@ void GameField::printScoreField()
 }
 
 //------------------------------------------------------------------------------------------
-void GameField::printTitle(const uint8_t x, const uint8_t y, const wchar_t* line)
+void GameField::printTitle(const uint8_t& x, const uint8_t& y, const wchar_t* line)
 //------------------------------------------------------------------------------------------
 {
     if (line == nullptr) {
@@ -179,7 +179,7 @@ void GameField::printTitle(const uint8_t x, const uint8_t y, const wchar_t* line
 }
 
 //------------------------------------------------------------------------------------------
-void GameField::printRectangleBoudary(const uint8_t x1, const uint8_t y1, const uint8_t x2, const uint8_t y2)
+void GameField::printRectangleBoudary(const uint8_t& x1, const uint8_t& y1, const uint8_t& x2, const uint8_t& y2)
 //------------------------------------------------------------------------------------------
 {
     printLine(x1 - 1, y1 - 1, x2 -1 , y1 - 1);
@@ -189,7 +189,7 @@ void GameField::printRectangleBoudary(const uint8_t x1, const uint8_t y1, const 
 }
 
 //------------------------------------------------------------------------------------------
-void GameField::printLine(const uint8_t x1, const uint8_t y1, const uint8_t x2, const uint8_t  y2)
+void GameField::printLine(const uint8_t& x1, const uint8_t& y1, const uint8_t& x2, const uint8_t& y2)
 //------------------------------------------------------------------------------------------
 {
     if (x1 == x2) {
@@ -204,7 +204,7 @@ void GameField::printLine(const uint8_t x1, const uint8_t y1, const uint8_t x2, 
         }
 }
 //------------------------------------------------------------------------------------------
-void GameField::updateChar(const T_Coordinates coord, const uint8_t c)
+void GameField::updateChar(const T_Coordinates& coord, const uint8_t& c)
 //------------------------------------------------------------------------------------------
 {
     TCHAR tempC = static_cast<TCHAR>(c);
@@ -240,7 +240,7 @@ void GameField::printLivesField()
 }
 
 //------------------------------------------------------------------------------------------
-void GameField::printRectangXY(const uint8_t x, const uint8_t y, const uint8_t sizeX, const uint8_t sizeY)
+void GameField::printRectangXY(const uint8_t& x, const uint8_t& y, const uint8_t& sizeX, const uint8_t& sizeY)
 //------------------------------------------------------------------------------------------
 {
     for (uint8_t i = 0; i < sizeX; ++i) {

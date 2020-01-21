@@ -20,7 +20,7 @@ class Ghost: public ICharacter {
         virtual const uint8_t& getPrintSymbol()const override;
         virtual const uint8_t& getTileInMyPosition()override;
         virtual void setTileInMyPosition(const uint8_t)override;
-        virtual void makeMove(const bool canGoUp, const bool canGoDown, const bool canGoLeft, const bool canGoRight)override;
+        virtual void makeMove(const bool& canGoUp, const bool& canGoDown, const bool& canGoLeft, const bool& canGoRight)override;
 
     private:
         void changeCoordinateForDirection(E_DIRECTION dir);

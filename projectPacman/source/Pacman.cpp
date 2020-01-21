@@ -97,7 +97,7 @@ void Pacman::setTileInMyPosition(const uint8_t tiele)
 }
 
 //------------------------------------------------------------------------------------------
-void Pacman::makeMove(const bool canGoUp, const bool canGoDown, const bool canGoLeft, const bool canGoRight)
+void Pacman::makeMove(const bool& canGoUp, const bool& canGoDown, const bool& canGoLeft, const bool& canGoRight)
 //------------------------------------------------------------------------------------------
 {
     if (canGoUp && mDescription_.mDirection_ == UP) {
