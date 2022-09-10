@@ -212,8 +212,11 @@ void GameField::updateChar(const T_Coordinates& coord, const uint8_t& c)
     static DWORD dw;
     COORD chCoord;
     chCoord.X = static_cast<SHORT>(coord.first);
-    chCoord.Y = static_cast<SHORT>(coord.second);
+    chCoord.Y = static_cast<SHORT>(coord.second);    
     WriteConsoleOutputCharacter(hStdOut, &tempC, 1, chCoord, &dw);
+    /*WORD wColors[4];
+    WriteConsoleOutputAttribute(hStdOut,wColors,1,chCoord,&dw);
+    */
 }
 
 //------------------------------------------------------------------------------------------
