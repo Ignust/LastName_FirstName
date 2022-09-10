@@ -26,7 +26,7 @@ void Ghost::resetPosition()
     mDescription_.mDirection_ = RIGHT;
     mDescription_.mCoordinates_.first = START_X_GHOST();
     mDescription_.mCoordinates_.second = START_Y_GHOST();
-    mDescription_.tileInMyPosition = OBJECT_EMPTY();
+    mDescription_.tileInMyPosition = SMALLPOINT_SYMBOL();
 }
 
 //------------------------------------------------------------------------------------------
